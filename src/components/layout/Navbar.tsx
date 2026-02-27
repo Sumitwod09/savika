@@ -1,9 +1,20 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useCartStore } from '@/store/cartStore'
 import CartDrawer from '@/components/layout/CartDrawer'
+
+// Fallback catalog for client-side search
+const searchCatalog = [
+    { name: 'Kashmiri Mirch (Whole)', slug: 'kashmiri-mirch-whole', cat: 'Whole Spices' },
+    { name: 'Premium Turmeric Powder', slug: 'premium-turmeric-powder', cat: 'Ground & Powdered' },
+    { name: 'Garam Masala Artisan Blend', slug: 'garam-masala-artisan', cat: 'Blends & Masalas' },
+    { name: 'Green Cardamom (Elaichi)', slug: 'green-cardamom', cat: 'Whole Spices' },
+    { name: 'Coriander Powder (Dhaniya)', slug: 'coriander-powder', cat: 'Ground & Powdered' },
+    { name: 'Chai Masala Classic', slug: 'chai-masala', cat: 'Blends & Masalas' },
+]
 
 
 const navLinks = [
@@ -27,8 +38,23 @@ export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false)
     const [mobileOpen, setMobileOpen] = useState(false)
     const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+    const [isSearchOpen, setIsSearchOpen] = useState(false)
+    const [searchQuery, setSearchQuery] = useState('')
     const { itemCount, toggleCart } = useCartStore()
     const count = itemCount()
+    const pathname = usePathname()
+    const router = useRouter()
+
+    const filteredSearch = searchQuery.trim() === '' ? [] : searchCatalog.filter(
+        item => item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            item.cat.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+
+    useEffect(() => {
+        setIsSearchOpen(false)
+        setSearchQuery('')
+        setMobileOpen(false)
+    }, [pathname])
 
     useEffect(() => {
         const handler = () => setIsScrolled(window.scrollY > 20)
@@ -43,9 +69,8 @@ export default function Navbar() {
                 Free shipping on orders above ₹599 &nbsp;|&nbsp; 100% Pure &amp; Natural &nbsp;|&nbsp; Pan-India Delivery
             </div>
 
-            {/* Header */}
             <header
-                className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled
+                className={`sticky top-0 z-40 w-full transition-all duration-300 ${isScrolled
                     ? 'bg-white/95 backdrop-blur-md shadow-md'
                     : 'bg-[#FFF8F0]'
                     }`}
@@ -112,7 +137,11 @@ export default function Navbar() {
 
                         {/* Action Icons */}
                         <div className="flex items-center gap-1">
-                            <button aria-label="Search" className="p-2.5 rounded-xl hover:bg-[#FFF0DC] text-[#2E2E2E] hover:text-[#C47F17] transition-all">
+                            <button
+                                aria-label="Search"
+                                onClick={() => setIsSearchOpen(true)}
+                                className="p-2.5 rounded-xl hover:bg-[#FFF0DC] text-[#2E2E2E] hover:text-[#C47F17] transition-all"
+                            >
                                 <i className="fa-solid fa-magnifying-glass text-base" />
                             </button>
                             <Link href="/account/wishlist" aria-label="Wishlist" className="hidden sm:flex p-2.5 rounded-xl hover:bg-[#FFF0DC] text-[#2E2E2E] hover:text-[#C47F17] transition-all">
@@ -186,6 +215,64 @@ export default function Navbar() {
                     )}
                 </div>
             </header>
+
+            {/* Search Overlay */}
+            {isSearchOpen && (
+                <div className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm flex justify-center items-start pt-20 px-4 transition-opacity">
+                    <div className="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden animate-fadeUp">
+                        <div className="flex items-center border-b border-[#F0E8DC] px-4 py-3">
+                            <i className="fa-solid fa-magnifying-glass text-[#8E562E] mr-3" />
+                            <input
+                                autoFocus
+                                type="text"
+                                placeholder="Search for spices, blends, or categories..."
+                                className="flex-1 bg-transparent border-none outline-none text-[#2E2E2E] text-lg font-medium placeholder:text-[#ccc]"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                            <button
+                                onClick={() => setIsSearchOpen(false)}
+                                className="ml-3 p-2 text-[#8E562E] hover:text-[#C47F17] hover:bg-[#FFF0DC] rounded-xl transition-colors"
+                            >
+                                <i className="fa-solid fa-xmark text-lg" />
+                            </button>
+                        </div>
+
+                        {/* Search Results */}
+                        <div className="max-h-[60vh] overflow-y-auto w-full">
+                            {searchQuery.trim() !== '' ? (
+                                filteredSearch.length > 0 ? (
+                                    <div className="p-2">
+                                        <p className="px-3 py-2 text-xs font-bold text-[#8E562E] uppercase tracking-wider">Products</p>
+                                        {filteredSearch.map((item) => (
+                                            <button
+                                                key={item.slug}
+                                                onClick={() => router.push(`/product/${item.slug}`)}
+                                                className="w-full text-left flex items-center justify-between px-3 py-3 hover:bg-[#FFF0DC] rounded-xl transition-colors group"
+                                            >
+                                                <div>
+                                                    <p className="font-semibold text-[#2E2E2E] group-hover:text-[#C47F17] transition-colors">{item.name}</p>
+                                                    <p className="text-xs text-[#8E562E] mt-0.5">{item.cat}</p>
+                                                </div>
+                                                <i className="fa-solid fa-chevron-right text-xs text-[#ccc] group-hover:text-[#C47F17] transition-colors" />
+                                            </button>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <div className="px-6 py-12 text-center text-[#8E562E]">
+                                        <i className="fa-solid fa-leaf text-3xl mb-3 opacity-30" />
+                                        <p>No products found for "{searchQuery}"</p>
+                                    </div>
+                                )
+                            ) : (
+                                <div className="px-6 py-10 text-center text-[#8E562E]">
+                                    <p className="text-sm font-medium">Start typing to search our premium catalog...</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <CartDrawer />
         </>
