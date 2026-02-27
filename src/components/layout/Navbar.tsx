@@ -95,11 +95,8 @@ export default function Navbar() {
                     <div className="flex h-16 items-center justify-between gap-4">
 
                         {/* Logo */}
-                        <Link href="/" className="flex items-center gap-2 shrink-0">
-                            <div>
-                                <span className="text-xl font-extrabold text-[#C47F17] tracking-tight">Savika</span>
-                                <span className="block text-[9px] text-[#8E562E] uppercase tracking-widest leading-tight">Premium Spices</span>
-                            </div>
+                        <Link href="/" className="flex items-center shrink-0">
+                            <img src="/logo.png" alt="Savika Logo" className="h-14 sm:h-16 w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" />
                         </Link>
 
                         {/* Desktop Nav */}

@@ -37,18 +37,18 @@ export default function ShopPage() {
     ]
 
     return (
-        <div className="min-h-screen bg-[#F9F4EE] dark:bg-[#161616]">
+        <div className="min-h-screen bg-[#F9F4EE]">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
 
             {/* Header */}
-            <div className="bg-white dark:bg-[#1C1C1C] border-b border-[#e8ddd0] dark:border-[#2a2a2a]">
+            <div className="bg-white border-b border-[#e8ddd0]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                     <nav className="flex items-center gap-2 text-xs text-gray-400 font-[var(--font-poppins)] mb-3">
                         <Link href="/" className="hover:text-[#C47F17]">Home</Link>
                         <span>/</span>
                         <span className="text-[#C47F17]">Shop</span>
                     </nav>
-                    <h1 className="text-3xl lg:text-4xl font-bold font-[var(--font-playfair)] text-[#2E2E2E] dark:text-[#F5F5F5]">
+                    <h1 className="text-3xl lg:text-4xl font-bold font-[var(--font-playfair)] text-[#2E2E2E]">
                         All <span className="text-[#C47F17] italic">Spices</span>
                     </h1>
                     <p className="mt-2 text-sm text-gray-500 font-[var(--font-poppins)]">Showing {ALL_PRODUCTS.length} products</p>
@@ -62,7 +62,7 @@ export default function ShopPage() {
                         <Link key={cat.value} href={cat.value === 'all' ? '/shop' : `/category/${cat.value}`}
                             className={`shrink-0 px-5 py-2 rounded-full text-sm font-semibold font-[var(--font-poppins)] border transition-all duration-200 ${cat.value === 'all'
                                     ? 'bg-[#C47F17] text-white border-[#C47F17]'
-                                    : 'bg-white dark:bg-[#262626] text-[#2E2E2E] dark:text-[#F5F5F5] border-[#e8ddd0] dark:border-[#333] hover:border-[#C47F17] hover:text-[#C47F17]'
+                                    : 'bg-white text-[#2E2E2E] border-[#e8ddd0] hover:border-[#C47F17] hover:text-[#C47F17]'
                                 }`}>
                             {cat.label}
                         </Link>

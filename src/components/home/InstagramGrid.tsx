@@ -9,17 +9,17 @@ const INSTAGRAM_POSTS = [
 
 export default function InstagramGrid() {
     return (
-        <section className="py-14 bg-white dark:bg-[#111]">
+        <section className="py-14 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="text-center mb-8">
-                    <p className="text-xs uppercase tracking-widest text-[#8E562E] dark:text-[#c4a87e] font-semibold mb-2">
+                    <p className="text-xs uppercase tracking-widest text-[#8E562E] font-semibold mb-2">
                         <i className="fa-brands fa-instagram mr-1 text-[#C47F17]" />Follow @savika.in
                     </p>
-                    <h2 className="font-[family-name:var(--font-playfair)] text-2xl sm:text-3xl font-extrabold text-[#2E2E2E] dark:text-white">
+                    <h2 className="font-[family-name:var(--font-playfair)] text-2xl sm:text-3xl font-extrabold text-[#2E2E2E]">
                         The <span className="text-[#C47F17] italic">Spice Kitchen</span> Gallery
                     </h2>
-                    <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">Tag us with #SavikaSpices for a feature!</p>
+                    <p className="text-sm text-gray-400 mt-2">Tag us with #SavikaSpices for a feature!</p>
                 </div>
 
                 {/* Grid */}
@@ -51,7 +51,7 @@ export default function InstagramGrid() {
                         href="https://instagram.com/savika.in"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm font-bold text-[#C47F17] hover:text-[#a86c12] border border-[#C47F17]/30 rounded-full px-6 py-2.5 hover:bg-[#FFF0DC] dark:hover:bg-[#2a1800] transition-all"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-[#C47F17] hover:text-[#a86c12] border border-[#C47F17]/30 rounded-full px-6 py-2.5 hover:bg-[#FFF0DC] transition-all"
                     >
                         <i className="fa-brands fa-instagram" />
                         Follow us on Instagram

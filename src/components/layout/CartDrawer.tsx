@@ -32,16 +32,16 @@ export default function CartDrawer() {
             {/* Drawer */}
             <div
                 ref={drawerRef}
-                className={`fixed top-0 right-0 h-full w-full max-w-md bg-white dark:bg-[#1C1C1C] z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'
+                className={`fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'
                     }`}
             >
                 {/* Header */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-[#e8ddd0] dark:border-[#333]">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-[#e8ddd0]">
                     <div>
-                        <h2 className="text-lg font-bold font-[var(--font-playfair)] text-[#2E2E2E] dark:text-[#F5F5F5]">Your Cart</h2>
+                        <h2 className="text-lg font-bold font-[var(--font-playfair)] text-[#2E2E2E]">Your Cart</h2>
                         <p className="text-xs text-[#8E562E] font-[var(--font-poppins)]">{items.length} item{items.length !== 1 ? 's' : ''}</p>
                     </div>
-                    <button onClick={closeCart} className="p-2 rounded-lg hover:bg-[#F9F4EE] dark:hover:bg-[#262626] text-[#2E2E2E] dark:text-[#F5F5F5] transition-colors">
+                    <button onClick={closeCart} className="p-2 rounded-lg hover:bg-[#F9F4EE] text-[#2E2E2E] transition-colors">
                         <i className="fa-solid fa-xmark text-base" />
                     </button>
                 </div>
@@ -54,7 +54,7 @@ export default function CartDrawer() {
                                 <i className="fa-solid fa-bag-shopping text-4xl text-[#C47F17]/50" />
                             </div>
                             <div>
-                                <p className="font-semibold text-[#2E2E2E] dark:text-[#F5F5F5] font-[var(--font-playfair)]">Your cart is empty</p>
+                                <p className="font-semibold text-[#2E2E2E] font-[var(--font-playfair)]">Your cart is empty</p>
                                 <p className="text-sm text-gray-500 mt-1">Add some premium spices to get started!</p>
                             </div>
                             <button onClick={closeCart} className="btn-primary">
@@ -66,18 +66,18 @@ export default function CartDrawer() {
                             {items.map((item) => {
                                 const price = item.product.sale_price ?? item.product.price
                                 return (
-                                    <div key={`${item.product_id}-${item.weight}`} className="flex gap-4 p-3 rounded-xl bg-[#F9F4EE] dark:bg-[#262626]">
+                                    <div key={`${item.product_id}-${item.weight}`} className="flex gap-4 p-3 rounded-xl bg-[#F9F4EE]">
                                         <div className="relative w-18 h-18 rounded-lg overflow-hidden bg-white shrink-0">
                                             {item.product.images?.[0] ? (
                                                 <Image src={item.product.images[0]} alt={item.product.name} fill className="object-cover" />
                                             ) : (
-                                                <div className="w-full h-full bg-[#e8ddd0] dark:bg-[#333] flex items-center justify-center">
+                                                <div className="w-full h-full bg-[#e8ddd0] flex items-center justify-center">
                                                     <i className="fa-solid fa-pepper-hot text-2xl text-[#C47F17]/50" />
                                                 </div>
                                             )}
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-semibold text-[#2E2E2E] dark:text-[#F5F5F5] truncate font-[var(--font-poppins)]">{item.product.name}</p>
+                                            <p className="text-sm font-semibold text-[#2E2E2E] truncate font-[var(--font-poppins)]">{item.product.name}</p>
                                             {item.weight && <p className="text-xs text-[#8E562E] mt-0.5">{item.weight}</p>}
                                             <p className="text-sm font-bold text-[#C47F17] mt-1">{formatCurrency(price)}</p>
                                             <div className="flex items-center gap-2 mt-2">
@@ -87,7 +87,7 @@ export default function CartDrawer() {
                                                 >
                                                     <i className="fa-solid fa-minus text-[10px]" />
                                                 </button>
-                                                <span className="text-sm font-bold text-[#2E2E2E] dark:text-[#F5F5F5] w-6 text-center">{item.quantity}</span>
+                                                <span className="text-sm font-bold text-[#2E2E2E] w-6 text-center">{item.quantity}</span>
                                                 <button
                                                     onClick={() => updateQuantity(item.product_id, item.quantity + 1)}
                                                     className="w-7 h-7 rounded-full border border-[#C47F17]/40 flex items-center justify-center text-[#C47F17] hover:bg-[#C47F17] hover:text-white transition-colors"
@@ -96,7 +96,7 @@ export default function CartDrawer() {
                                                 </button>
                                                 <button
                                                     onClick={() => removeItem(item.product_id)}
-                                                    className="ml-auto p-1.5 rounded-lg text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                                                    className="ml-auto p-1.5 rounded-lg text-red-400 hover:bg-red-50 transition-colors"
                                                 >
                                                     <i className="fa-solid fa-trash text-xs" />
                                                 </button>
@@ -111,10 +111,10 @@ export default function CartDrawer() {
 
                 {/* Footer */}
                 {items.length > 0 && (
-                    <div className="border-t border-[#e8ddd0] dark:border-[#333] px-6 py-4 space-y-4">
+                    <div className="border-t border-[#e8ddd0] px-6 py-4 space-y-4">
                         <div className="flex justify-between items-center">
                             <span className="text-sm text-gray-500 font-[var(--font-poppins)]">Subtotal</span>
-                            <span className="text-lg font-bold text-[#2E2E2E] dark:text-[#F5F5F5] font-[var(--font-playfair)]">{formatCurrency(cartTotal)}</span>
+                            <span className="text-lg font-bold text-[#2E2E2E] font-[var(--font-playfair)]">{formatCurrency(cartTotal)}</span>
                         </div>
                         <p className="text-xs text-gray-400 text-center">Shipping & taxes calculated at checkout</p>
                         <div className="space-y-2">
@@ -128,7 +128,7 @@ export default function CartDrawer() {
                             <Link
                                 href="/cart"
                                 onClick={closeCart}
-                                className="block w-full text-center border border-[#C47F17] text-[#C47F17] py-3 rounded-xl font-semibold font-[var(--font-poppins)] hover:bg-[#F9F4EE] dark:hover:bg-[#262626] transition-colors"
+                                className="block w-full text-center border border-[#C47F17] text-[#C47F17] py-3 rounded-xl font-semibold font-[var(--font-poppins)] hover:bg-[#F9F4EE] transition-colors"
                             >
                                 View Cart
                             </Link>

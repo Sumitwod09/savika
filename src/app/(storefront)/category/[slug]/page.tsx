@@ -192,16 +192,16 @@ export default async function CategoryPage({ params }: Props) {
     }
 
     return (
-        <div className="min-h-screen bg-[#F9F4EE] dark:bg-[#0F0F0F]">
+        <div className="min-h-screen bg-[#F9F4EE]">
             {/* JSON-LD */}
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
 
             {/* ── Breadcrumb ── */}
-            <div className="bg-white dark:bg-[#1A1A1A] border-b border-[#e8ddd0] dark:border-white/10 py-3">
+            <div className="bg-white border-b border-[#e8ddd0] py-3">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
+                    <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-gray-400">
                         <Link href="/" className="hover:text-[#C47F17] transition-colors">Home</Link>
                         <i className="fa-solid fa-chevron-right text-[8px]" />
                         <Link href="/shop" className="hover:text-[#C47F17] transition-colors">Shop</Link>
@@ -218,16 +218,16 @@ export default async function CategoryPage({ params }: Props) {
                     <p className="text-xs font-bold text-[#C47F17] uppercase tracking-widest mb-2">
                         <i className="fa-solid fa-pepper-hot mr-1" /> Savika — {cat.name}
                     </p>
-                    <h1 className="text-3xl sm:text-4xl font-extrabold text-[#2C1A0E] dark:text-white leading-tight mb-4">
+                    <h1 className="text-3xl sm:text-4xl font-extrabold text-[#2C1A0E] leading-tight mb-4">
                         {cat.headline}
                     </h1>
-                    <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{cat.description}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-500 leading-relaxed">{cat.longDescription}</p>
+                    <p className="text-base text-gray-600 leading-relaxed mb-4">{cat.description}</p>
+                    <p className="text-sm text-gray-500 leading-relaxed">{cat.longDescription}</p>
                 </section>
 
                 {/* ── Filter bar: Link to other categories ── */}
                 <section>
-                    <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">Browse Categories</p>
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Browse Categories</p>
                     <div className="flex flex-wrap gap-2">
                         {Object.values(CATEGORIES).map((c) => (
                             <Link
@@ -235,7 +235,7 @@ export default async function CategoryPage({ params }: Props) {
                                 href={`/category/${c.slug}`}
                                 className={`px-4 py-2 rounded-full text-sm font-semibold border transition-all ${c.slug === slug
                                     ? 'bg-[#C47F17] text-white border-[#C47F17]'
-                                    : 'bg-white dark:bg-[#1A1A1A] text-[#2E2E2E] dark:text-gray-300 border-[#e8ddd0] dark:border-white/10 hover:border-[#C47F17] hover:text-[#C47F17]'
+                                    : 'bg-white text-[#2E2E2E] border-[#e8ddd0] hover:border-[#C47F17] hover:text-[#C47F17]'
                                     }`}
                             >
                                 {c.name}
@@ -247,7 +247,7 @@ export default async function CategoryPage({ params }: Props) {
                 {/* ── Products Grid ── */}
                 <section>
                     <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-xl font-extrabold text-[#2C1A0E] dark:text-white">
+                        <h2 className="text-xl font-extrabold text-[#2C1A0E]">
                             {products.length > 0 ? `${products.length} Products` : 'Products'}
                         </h2>
                         <Link href="/shop" className="text-sm text-[#C47F17] font-semibold hover:underline flex items-center gap-1">
@@ -262,9 +262,9 @@ export default async function CategoryPage({ params }: Props) {
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-20 bg-white dark:bg-[#1A1A1A] rounded-3xl border border-[#e8ddd0] dark:border-white/10">
+                        <div className="text-center py-20 bg-white rounded-3xl border border-[#e8ddd0]">
                             <i className="fa-solid fa-box-open text-4xl text-[#C47F17]/40 mb-4 block" />
-                            <p className="text-gray-500 dark:text-gray-400 font-medium">Products coming soon.</p>
+                            <p className="text-gray-500 font-medium">Products coming soon.</p>
                             <Link href="/shop" className="mt-4 inline-flex items-center gap-2 text-[#C47F17] font-semibold text-sm hover:underline">
                                 <i className="fa-solid fa-store text-xs" /> Browse all spices
                             </Link>
@@ -273,7 +273,7 @@ export default async function CategoryPage({ params }: Props) {
                 </section>
 
                 {/* ── Why Savika Trust Strip ── */}
-                <section className="bg-[#2C1A0E] dark:bg-[#1A1A1A] rounded-3xl p-8">
+                <section className="bg-[#2C1A0E] rounded-3xl p-8">
                     <h2 className="text-lg font-extrabold text-white mb-6 text-center">Why Buy From Savika?</h2>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
                         {[
@@ -295,7 +295,7 @@ export default async function CategoryPage({ params }: Props) {
 
                 {/* ── FAQ Section ── */}
                 <section className="max-w-3xl">
-                    <h2 className="text-2xl font-extrabold text-[#2C1A0E] dark:text-white mb-6 flex items-center gap-3">
+                    <h2 className="text-2xl font-extrabold text-[#2C1A0E] mb-6 flex items-center gap-3">
                         <div className="w-9 h-9 rounded-xl bg-[#C47F17]/20 flex items-center justify-center">
                             <i className="fa-solid fa-circle-question text-[#C47F17]" />
                         </div>
@@ -305,13 +305,13 @@ export default async function CategoryPage({ params }: Props) {
                         {cat.faqs.map((faq, i) => (
                             <details
                                 key={i}
-                                className="group bg-white dark:bg-[#1A1A1A] rounded-2xl border border-[#e8ddd0] dark:border-white/10 overflow-hidden"
+                                className="group bg-white rounded-2xl border border-[#e8ddd0] overflow-hidden"
                             >
-                                <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-[#2C1A0E] dark:text-white hover:bg-[#FFF8F0] dark:hover:bg-white/5 transition-colors">
+                                <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-[#2C1A0E] hover:bg-[#FFF8F0] transition-colors">
                                     <span>{faq.q}</span>
                                     <i className="fa-solid fa-chevron-down text-[#C47F17] text-xs group-open:rotate-180 transition-transform" />
                                 </summary>
-                                <div className="px-5 pb-5 pt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-[#e8ddd0] dark:border-white/10">
+                                <div className="px-5 pb-5 pt-4 text-sm text-gray-600 leading-relaxed border-t border-[#e8ddd0]">
                                     {faq.a}
                                 </div>
                             </details>
@@ -321,7 +321,7 @@ export default async function CategoryPage({ params }: Props) {
 
                 {/* ── Internal Links ── */}
                 <section className="pb-4">
-                    <p className="text-sm font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-4">Explore More</p>
+                    <p className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-4">Explore More</p>
                     <div className="flex flex-wrap gap-3">
                         {Object.values(CATEGORIES)
                             .filter((c) => c.slug !== slug)
@@ -329,7 +329,7 @@ export default async function CategoryPage({ params }: Props) {
                                 <Link
                                     key={c.slug}
                                     href={`/category/${c.slug}`}
-                                    className="flex items-center gap-2 bg-white dark:bg-[#1A1A1A] border border-[#e8ddd0] dark:border-white/10 hover:border-[#C47F17] text-[#2C1A0E] dark:text-gray-300 hover:text-[#C47F17] font-semibold px-4 py-2.5 rounded-full text-sm transition-all"
+                                    className="flex items-center gap-2 bg-white border border-[#e8ddd0] hover:border-[#C47F17] text-[#2C1A0E] hover:text-[#C47F17] font-semibold px-4 py-2.5 rounded-full text-sm transition-all"
                                 >
                                     <i className="fa-solid fa-arrow-right text-[#C47F17] text-xs" />
                                     {c.name}

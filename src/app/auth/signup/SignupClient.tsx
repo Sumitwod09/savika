@@ -25,12 +25,12 @@ export default function SignupClient() {
 
     if (success) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-[#F9F4EE] dark:bg-[#161616] px-4">
+            <div className="min-h-screen flex items-center justify-center bg-[#F9F4EE] px-4">
                 <div className="text-center max-w-md">
                     <div className="w-16 h-16 mx-auto rounded-full bg-green-100 flex items-center justify-center mb-4">
                         <i className="fa-solid fa-circle-check text-4xl text-green-500" />
                     </div>
-                    <h2 className="text-2xl font-bold font-[var(--font-playfair)] text-[#2E2E2E] dark:text-[#F5F5F5] mb-2">Check your email!</h2>
+                    <h2 className="text-2xl font-bold font-[var(--font-playfair)] text-[#2E2E2E] mb-2">Check your email!</h2>
                     <p className="text-gray-500 font-[var(--font-poppins)] text-sm">We've sent a confirmation link to <strong>{email}</strong>.</p>
                     <Link href="/auth/login" className="mt-6 inline-block text-[#C47F17] font-[var(--font-poppins)] font-semibold hover:underline">Back to Sign In →</Link>
                 </div>
@@ -39,7 +39,7 @@ export default function SignupClient() {
     }
 
     return (
-        <div className="min-h-screen flex bg-[#F9F4EE] dark:bg-[#161616]">
+        <div className="min-h-screen flex bg-[#F9F4EE]">
             <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#8E562E] to-[#C47F17] items-center justify-center p-12 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-5 flex items-center justify-center">
                     <i className="fa-solid fa-pepper-hot text-[20rem] text-[#C47F17]" />
@@ -53,7 +53,7 @@ export default function SignupClient() {
                 <div className="w-full max-w-md">
                     <div className="mb-8">
                         <Link href="/" className="text-2xl font-bold font-[var(--font-playfair)] text-[#C47F17]">Savika</Link>
-                        <h1 className="text-3xl font-bold font-[var(--font-playfair)] text-[#2E2E2E] dark:text-[#F5F5F5] mt-4">Create Account</h1>
+                        <h1 className="text-3xl font-bold font-[var(--font-playfair)] text-[#2E2E2E] mt-4">Create Account</h1>
                         <p className="text-sm text-gray-500 font-[var(--font-poppins)] mt-1">Already registered?{' '}
                             <Link href="/auth/login" className="text-[#C47F17] hover:underline font-semibold">Sign in</Link>
                         </p>
@@ -65,13 +65,13 @@ export default function SignupClient() {
                             { id: 'password', label: 'Password', type: 'password', value: password, setter: setPassword, placeholder: '8+ characters' },
                         ].map((field) => (
                             <div key={field.id}>
-                                <label htmlFor={field.id} className="block text-sm font-semibold text-[#2E2E2E] dark:text-[#F5F5F5] font-[var(--font-poppins)] mb-1.5">{field.label}</label>
+                                <label htmlFor={field.id} className="block text-sm font-semibold text-[#2E2E2E] font-[var(--font-poppins)] mb-1.5">{field.label}</label>
                                 <input id={field.id} type={field.type} value={field.value} onChange={(e) => field.setter(e.target.value)} required
-                                    className="w-full px-4 py-3 rounded-xl border border-[#e8ddd0] dark:border-[#333] bg-white dark:bg-[#262626] text-[#2E2E2E] dark:text-[#F5F5F5] font-[var(--font-poppins)] text-sm focus:outline-none focus:border-[#C47F17] focus:ring-2 focus:ring-[#C47F17]/20 transition-all"
+                                    className="w-full px-4 py-3 rounded-xl border border-[#e8ddd0] bg-white text-[#2E2E2E] font-[var(--font-poppins)] text-sm focus:outline-none focus:border-[#C47F17] focus:ring-2 focus:ring-[#C47F17]/20 transition-all"
                                     placeholder={field.placeholder} minLength={field.id === 'password' ? 8 : undefined} />
                             </div>
                         ))}
-                        {error && <p className="text-sm text-red-500 font-[var(--font-poppins)] bg-red-50 dark:bg-red-900/20 px-4 py-2 rounded-lg">{error}</p>}
+                        {error && <p className="text-sm text-red-500 font-[var(--font-poppins)] bg-red-50 px-4 py-2 rounded-lg">{error}</p>}
                         <button type="submit" disabled={loading}
                             className="w-full flex items-center justify-center gap-2 bg-[#C47F17] hover:bg-[#a86c12] text-white py-3.5 rounded-xl font-bold font-[var(--font-poppins)] transition-all duration-300 hover:scale-[1.02] disabled:opacity-60">
                             {loading && <i className="fa-solid fa-spinner fa-spin text-sm" />}

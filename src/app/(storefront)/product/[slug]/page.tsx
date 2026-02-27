@@ -294,16 +294,16 @@ export default async function ProductPage({ params }: Props) {
     }
 
     return (
-        <div className="min-h-screen bg-[#F9F4EE] dark:bg-[#0F0F0F]">
+        <div className="min-h-screen bg-[#F9F4EE]">
             {/* JSON-LD */}
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
             {/* ── Breadcrumb ── */}
-            <div className="bg-white dark:bg-[#1A1A1A] border-b border-[#e8ddd0] dark:border-white/10 py-3">
+            <div className="bg-white border-b border-[#e8ddd0] py-3">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
+                    <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-gray-400">
                         <Link href="/" className="hover:text-[#C47F17] transition-colors">Home</Link>
                         <i className="fa-solid fa-chevron-right text-[8px]" />
                         <Link href="/shop" className="hover:text-[#C47F17] transition-colors">Shop</Link>
@@ -379,7 +379,7 @@ export default async function ProductPage({ params }: Props) {
 
                         {/* Price */}
                         <div className="flex items-baseline gap-3">
-                            <span className="text-3xl font-extrabold text-[#2C1A0E] dark:text-white">
+                            <span className="text-3xl font-extrabold text-[#2C1A0E]">
                                 ₹{p.salePrice ?? p.price}
                             </span>
                             {p.salePrice && (
@@ -419,12 +419,12 @@ export default async function ProductPage({ params }: Props) {
                         </div>
 
                         {/* Delivery estimate */}
-                        <div className="bg-white dark:bg-[#1A1A1A] rounded-2xl border border-[#e8ddd0] dark:border-white/10 p-4 space-y-3">
+                        <div className="bg-white rounded-2xl border border-[#e8ddd0] p-4 space-y-3">
                             <div className="flex items-center gap-3">
                                 <i className="fa-solid fa-truck text-[#C47F17] text-lg w-5" />
                                 <div>
-                                    <p className="text-sm font-semibold text-[#2E2E2E] dark:text-gray-200">Free delivery on orders ₹599+</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-500">Delivered in 3–7 business days across India</p>
+                                    <p className="text-sm font-semibold text-[#2E2E2E]">Free delivery on orders ₹599+</p>
+                                    <p className="text-xs text-gray-500">Delivered in 3–7 business days across India</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
@@ -444,7 +444,7 @@ export default async function ProductPage({ params }: Props) {
                         </div>
 
                         {/* Hero Intro (SEO text) */}
-                        <div className="prose prose-sm dark:prose-invert max-w-none text-gray-600 dark:text-gray-400 leading-relaxed">
+                        <div className="prose prose-sm max-w-none text-gray-600 leading-relaxed">
                             <p>{p.heroIntro}</p>
                         </div>
                     </div>
@@ -453,12 +453,12 @@ export default async function ProductPage({ params }: Props) {
                 {/* ══════════════════════════════════════════════════
                     SECTION 2 — WHAT IS THIS SPICE?
                 ══════════════════════════════════════════════════ */}
-                <section className="bg-white dark:bg-[#1A1A1A] rounded-3xl p-8 shadow-sm border border-[#e8ddd0] dark:border-white/10">
+                <section className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8ddd0]">
                     <SectionHeading icon="fa-book-open" text={`What Is ${p.name.split(' ')[0]}?`} />
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
                         <div className="lg:col-span-2 space-y-4">
                             {p.whatIsThis.split('\n\n').map((para, i) => (
-                                <p key={i} className="text-gray-600 dark:text-gray-400 leading-relaxed">{para}</p>
+                                <p key={i} className="text-gray-600 leading-relaxed">{para}</p>
                             ))}
                         </div>
                         <div className="space-y-4">
@@ -481,12 +481,12 @@ export default async function ProductPage({ params }: Props) {
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         {p.benefits.map((b, i) => (
-                            <div key={i} className="bg-white dark:bg-[#1A1A1A] rounded-2xl p-5 border border-[#e8ddd0] dark:border-white/10 hover:shadow-md transition-shadow">
+                            <div key={i} className="bg-white rounded-2xl p-5 border border-[#e8ddd0] hover:shadow-md transition-shadow">
                                 <div className="w-10 h-10 rounded-xl bg-[#C47F17]/10 flex items-center justify-center mb-3">
                                     <i className="fa-solid fa-seedling text-[#C47F17]" />
                                 </div>
-                                <h3 className="font-bold text-[#2C1A0E] dark:text-white mb-2">{b.title}</h3>
-                                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{b.desc}</p>
+                                <h3 className="font-bold text-[#2C1A0E] mb-2">{b.title}</h3>
+                                <p className="text-sm text-gray-500 leading-relaxed">{b.desc}</p>
                             </div>
                         ))}
                     </div>
@@ -541,8 +541,8 @@ export default async function ProductPage({ params }: Props) {
                     SECTION 6 — STORAGE & SHELF LIFE
                 ══════════════════════════════════════════════════ */}
                 <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div className="bg-white dark:bg-[#1A1A1A] rounded-3xl p-7 border border-[#e8ddd0] dark:border-white/10">
-                        <h2 className="text-xl font-extrabold text-[#2C1A0E] dark:text-white mb-4 flex items-center gap-2">
+                    <div className="bg-white rounded-3xl p-7 border border-[#e8ddd0]">
+                        <h2 className="text-xl font-extrabold text-[#2C1A0E] mb-4 flex items-center gap-2">
                             <i className="fa-solid fa-jar text-[#C47F17]" />
                             Storage &amp; Shelf Life
                         </h2>
@@ -552,8 +552,8 @@ export default async function ProductPage({ params }: Props) {
                                     <i className="fa-solid fa-clock text-[#C47F17] text-xs" />
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-[#2C1A0E] dark:text-white text-sm">Shelf Life</p>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400">{p.storageLife}</p>
+                                    <p className="font-semibold text-[#2C1A0E] text-sm">Shelf Life</p>
+                                    <p className="text-sm text-gray-500">{p.storageLife}</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3">
@@ -561,20 +561,20 @@ export default async function ProductPage({ params }: Props) {
                                     <i className="fa-solid fa-box-archive text-[#C47F17] text-xs" />
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-[#2C1A0E] dark:text-white text-sm">How to Store</p>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400">{p.storageInstructions}</p>
+                                    <p className="font-semibold text-[#2C1A0E] text-sm">How to Store</p>
+                                    <p className="text-sm text-gray-500">{p.storageInstructions}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* ──────── Sourcing Story ──────── */}
-                    <section className="bg-[#FFF8F0] dark:bg-[#1A1A1A] rounded-3xl p-7 border border-[#e8ddd0] dark:border-white/10">
-                        <h2 className="text-xl font-extrabold text-[#2C1A0E] dark:text-white mb-4 flex items-center gap-2">
+                    <section className="bg-[#FFF8F0] rounded-3xl p-7 border border-[#e8ddd0]">
+                        <h2 className="text-xl font-extrabold text-[#2C1A0E] mb-4 flex items-center gap-2">
                             <i className="fa-solid fa-jar text-[#C47F17]" />
                             Sourcing Story
                         </h2>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{p.sourcingStory}</p>
+                        <p className="text-sm text-gray-600 leading-relaxed">{p.sourcingStory}</p>
                         <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-[#C47F17]">
                             <i className="fa-solid fa-leaf" />
                             <span>Farm-to-kitchen transparency</span>
@@ -591,9 +591,9 @@ export default async function ProductPage({ params }: Props) {
                         {p.faqs.map((faq, i) => (
                             <details
                                 key={i}
-                                className="group bg-white dark:bg-[#1A1A1A] rounded-2xl border border-[#e8ddd0] dark:border-white/10 overflow-hidden"
+                                className="group bg-white rounded-2xl border border-[#e8ddd0] overflow-hidden"
                             >
-                                <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-[#2C1A0E] dark:text-white hover:bg-[#FFF8F0] dark:hover:bg-white/5 transition-colors">
+                                <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-[#2C1A0E] hover:bg-[#FFF8F0] transition-colors">
                                     <span>{faq.q}</span>
                                     <i className="fa-solid fa-chevron-down text-[#C47F17] text-xs group-open:rotate-180 transition-transform" />
                                 </summary>
@@ -650,12 +650,12 @@ function SectionHeading({ icon, text, dark }: { icon: string; text: string; dark
 
 function InfoCard({ label, value, icon, italic }: { label: string; value: string; icon: string; italic?: boolean }) {
     return (
-        <div className="bg-[#FFF8F0] dark:bg-[#1C1C1C] rounded-xl p-4 border border-[#e8ddd0] dark:border-white/10">
+        <div className="bg-[#FFF8F0] rounded-xl p-4 border border-[#e8ddd0]">
             <div className="flex items-center gap-2 mb-1">
                 <i className={`fa-solid ${icon} text-[#C47F17] text-xs`} />
-                <span className="text-xs font-bold text-[#8E562E] dark:text-[#C47F17]/70 uppercase tracking-wider">{label}</span>
+                <span className="text-xs font-bold text-[#8E562E] uppercase tracking-wider">{label}</span>
             </div>
-            <p className={`text-sm text-[#2C1A0E] dark:text-gray-300 font-medium ${italic ? 'italic' : ''}`}>{value}</p>
+            <p className={`text-sm text-[#2C1A0E] font-medium ${italic ? 'italic' : ''}`}>{value}</p>
         </div>
     )
 }

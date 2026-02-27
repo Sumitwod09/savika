@@ -21,6 +21,10 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: 'Savika | Premium Indian Spices',
   description: 'Discover the finest, purest premium Indian spices online. Authentic flavors, sourced with care.',
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
 }
 
 export default function RootLayout({
