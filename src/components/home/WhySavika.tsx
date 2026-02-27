@@ -9,23 +9,23 @@ const reasons = [
 
 export default function WhySavika() {
     return (
-        <section className="bg-white dark:bg-[#141414]">
-            {/* CTA Banner — matches Lumora "Beauty That Loves Your Skin Back" */}
-            <div className="relative overflow-hidden bg-gradient-to-r from-[#C47F17] to-[#8E562E] py-14 px-4">
-                <div className="absolute -left-16 -top-16 w-60 h-60 rounded-full bg-white/5 pointer-events-none" />
-                <div className="absolute -right-16 -bottom-16 w-60 h-60 rounded-full bg-white/5 pointer-events-none" />
-                <div className="max-w-3xl mx-auto text-center relative z-10">
-                    <p className="text-xs font-bold tracking-widest uppercase text-white/60 mb-3">Our Promise</p>
-                    <h2 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-                        Quality That <span className="italic text-[#FFE0A0]">Loves</span> Your Kitchen Back
+        <section style={{ background: '#fff' }}>
+            {/* Full-width CTA Banner */}
+            <div style={{
+                background: 'linear-gradient(135deg, #C47F17 0%, #8E562E 100%)',
+                padding: '4rem 1.5rem', textAlign: 'center', position: 'relative', overflow: 'hidden'
+            }}>
+                <div style={{ position: 'absolute', left: '-4rem', top: '-4rem', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(255,255,255,.06)', pointerEvents: 'none' }} />
+                <div style={{ position: 'absolute', right: '-4rem', bottom: '-4rem', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(255,255,255,.06)', pointerEvents: 'none' }} />
+                <div style={{ position: 'relative', zIndex: 1, maxWidth: '700px', margin: '0 auto' }}>
+                    <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.6)', marginBottom: '1rem' }}>Our Promise</p>
+                    <h2 style={{ fontFamily: 'var(--font-playfair, Georgia)', fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 800, color: '#fff', lineHeight: 1.15, marginBottom: '1rem' }}>
+                        Quality That <em style={{ color: '#FFE0A0' }}>Loves</em> Your Kitchen Back
                     </h2>
-                    <p className="text-white/80 text-sm sm:text-base mb-8 max-w-lg mx-auto">
+                    <p style={{ color: 'rgba(255,255,255,.8)', fontSize: '1rem', marginBottom: '2rem' }}>
                         We are redefining spice with clean, conscious quality — from source to your shelf.
                     </p>
-                    <Link
-                        href="/shop"
-                        className="inline-flex items-center gap-2 bg-white text-[#C47F17] font-bold px-8 py-3.5 rounded-full hover:bg-[#2C1A0E] hover:text-white transition-all duration-200 hover:scale-105 shadow-xl"
-                    >
+                    <Link href="/shop" className="btn-gold" style={{ display: 'inline-flex' }}>
                         <i className="fa-solid fa-store" />
                         View All Products
                     </Link>
@@ -33,22 +33,19 @@ export default function WhySavika() {
             </div>
 
             {/* Reason Cards */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="section-wrap" style={{ paddingTop: '3rem', paddingBottom: '3rem' }}>
+                <div className="grid-cats">
                     {reasons.map((r) => (
-                        <div
-                            key={r.title}
-                            className="p-6 rounded-2xl border border-transparent hover:border-[#C47F17]/30 hover:shadow-xl transition-all duration-300 group cursor-default"
-                            style={{ backgroundColor: r.color }}
-                        >
-                            <div
-                                className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200"
-                                style={{ backgroundColor: `${r.iconColor}20` }}
-                            >
-                                <i className={`fa-solid ${r.icon} text-xl`} style={{ color: r.iconColor }} />
+                        <div key={r.title} className="reason-card" style={{ background: r.color }}>
+                            <div style={{
+                                width: '44px', height: '44px', borderRadius: '10px',
+                                background: `${r.iconColor}25`, display: 'flex',
+                                alignItems: 'center', justifyContent: 'center', marginBottom: '1rem'
+                            }}>
+                                <i className={`fa-solid ${r.icon}`} style={{ fontSize: '1.1rem', color: r.iconColor }} />
                             </div>
-                            <h3 className="text-sm font-extrabold text-[#2E2E2E] mb-2">{r.title}</h3>
-                            <p className="text-xs text-gray-500 leading-relaxed">{r.desc}</p>
+                            <h3 style={{ fontSize: '0.875rem', fontWeight: 800, color: '#2E2E2E', marginBottom: '0.5rem' }}>{r.title}</h3>
+                            <p style={{ fontSize: '0.8125rem', color: '#555', lineHeight: 1.6 }}>{r.desc}</p>
                         </div>
                     ))}
                 </div>

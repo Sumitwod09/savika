@@ -27,71 +27,77 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
     const discountPercent = product.sale_price ? getDiscountPercent(product.price, product.sale_price) : 0
 
     return (
-        <div className={`group bg-white dark:bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${className}`}>
-
-            {/* Image area */}
-            <Link href={`/product/${product.slug}`} className="block relative">
-                <div className="relative h-44 sm:h-52 bg-[#F9F4EE] dark:bg-[#2a2a2a] overflow-hidden">
+        <div className={`product-card ${className}`}>
+            <Link href={`/product/${product.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
+                {/* Image */}
+                <div className="product-card-img">
                     {product.images?.[0] ? (
                         <Image
                             src={product.images[0]}
                             alt={product.name}
                             fill
-                            className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                            className="object-contain"
+                            style={{ padding: '1rem', transition: 'transform 400ms' }}
                             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                         />
                     ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                            <i className="fa-solid fa-pepper-hot text-5xl text-[#C47F17]/30" />
+                        <div className="img-ph">
+                            <i className="fa-solid fa-pepper-hot" style={{ fontSize: '3rem', color: 'rgba(196,127,23,.3)' }} />
                         </div>
                     )}
-
-                    {/* Discount badge */}
+                    {/* Badge */}
                     {discountPercent > 0 && (
-                        <span className="absolute top-2.5 left-2.5 bg-[#C47F17] text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">
-                            -{discountPercent}%
-                        </span>
+                        <span style={{
+                            position: 'absolute', top: '0.625rem', left: '0.625rem', zIndex: 10,
+                            background: '#C47F17', color: '#fff', fontSize: '10px', fontWeight: 700,
+                            padding: '2px 7px', borderRadius: '9999px'
+                        }}>-{discountPercent}%</span>
                     )}
                     {product.is_featured && !discountPercent && (
-                        <span className="absolute top-2.5 left-2.5 bg-[#8E562E] text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">
-                            Best Seller
-                        </span>
+                        <span style={{
+                            position: 'absolute', top: '0.625rem', left: '0.625rem', zIndex: 10,
+                            background: '#8E562E', color: '#fff', fontSize: '10px', fontWeight: 700,
+                            padding: '2px 7px', borderRadius: '9999px'
+                        }}>Best Seller</span>
                     )}
-
                     {/* Wishlist */}
                     <button
                         onClick={(e) => { e.preventDefault(); setIsWishlisted(!isWishlisted) }}
                         aria-label="Toggle Wishlist"
-                        className="absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-white dark:bg-[#2a2a2a] shadow-md flex items-center justify-center transition-transform hover:scale-110"
+                        style={{
+                            position: 'absolute', top: '0.625rem', right: '0.625rem', zIndex: 10,
+                            width: '30px', height: '30px', borderRadius: '50%',
+                            background: '#fff', border: 'none', cursor: 'pointer',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            boxShadow: '0 2px 8px rgba(0,0,0,.1)'
+                        }}
                     >
-                        <i className={`fa-heart text-sm ${isWishlisted ? 'fa-solid text-red-500' : 'fa-regular text-gray-400'}`} />
+                        <i className={`fa-heart text-sm ${isWishlisted ? 'fa-solid' : 'fa-regular'}`} style={{ color: isWishlisted ? '#ef4444' : '#999' }} />
                     </button>
                 </div>
 
-                {/* Info */}
-                <div className="p-3 sm:p-4">
-                    <p className="text-[10px] sm:text-xs text-[#8E562E] dark:text-[#c4a87e] font-semibold mb-1 uppercase tracking-wide">
+                {/* Body */}
+                <div className="product-card-body">
+                    <p style={{ fontSize: '10px', color: '#8E562E', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '4px' }}>
                         {product.category?.name ?? 'Spice'}
                     </p>
-                    <h3 className="text-sm font-semibold text-[#2E2E2E] dark:text-white leading-snug line-clamp-2 mb-2 group-hover:text-[#C47F17] transition-colors">
+                    <h3 style={{ fontSize: '0.875rem', fontWeight: 600, color: '#2E2E2E', lineHeight: 1.35, marginBottom: '0.5rem', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
                         {product.name}
                     </h3>
-
                     {/* Stars */}
-                    <div className="flex items-center gap-0.5 mb-3">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1px', marginBottom: '0.5rem' }}>
                         {[...Array(5)].map((_, i) => (
-                            <i key={i} className="fa-solid fa-star text-[9px] text-[#C47F17]" />
+                            <i key={i} className="fa-solid fa-star" style={{ fontSize: '9px', color: '#C47F17' }} />
                         ))}
-                        <span className="text-[10px] text-gray-400 ml-1">(4.8)</span>
+                        <span style={{ fontSize: '10px', color: '#999', marginLeft: '4px' }}>(4.8)</span>
                     </div>
-
                     {/* Price */}
-                    <div className="flex items-center gap-2">
-                        <span className="text-base font-bold text-[#C47F17] font-[family-name:var(--font-playfair)]">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <span style={{ fontSize: '1rem', fontWeight: 700, color: '#C47F17', fontFamily: 'var(--font-playfair, Georgia)' }}>
                             {formatCurrency(product.sale_price ?? product.price)}
                         </span>
                         {product.sale_price && (
-                            <span className="text-xs line-through text-gray-400">
+                            <span style={{ fontSize: '0.8125rem', textDecoration: 'line-through', color: '#aaa' }}>
                                 {formatCurrency(product.price)}
                             </span>
                         )}
@@ -100,18 +106,13 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
             </Link>
 
             {/* Add to Cart */}
-            <div className="px-3 pb-3 sm:px-4 sm:pb-4">
+            <div style={{ padding: '0 0.875rem 0.875rem' }}>
                 <button
                     onClick={handleAddToCart}
                     disabled={product.stock === 0}
-                    className={`w-full flex items-center justify-center gap-2 py-2 sm:py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${product.stock === 0
-                        ? 'bg-gray-100 dark:bg-[#333] text-gray-400 cursor-not-allowed'
-                        : adding
-                            ? 'bg-green-500 text-white scale-[0.98]'
-                            : 'bg-[#FFF0DC] dark:bg-[#2a1800] text-[#C47F17] hover:bg-[#C47F17] hover:text-white hover:scale-[1.02]'
-                        }`}
+                    className={`atc-btn${adding ? ' added' : ''}`}
                 >
-                    <i className={`fa-solid ${adding ? 'fa-check' : 'fa-cart-shopping'} text-sm`} />
+                    <i className={`fa-solid ${adding ? 'fa-check' : 'fa-cart-shopping'}`} style={{ fontSize: '12px' }} />
                     {product.stock === 0 ? 'Out of Stock' : adding ? 'Added!' : 'Add to Cart'}
                 </button>
             </div>

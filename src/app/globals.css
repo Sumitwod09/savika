@@ -1,23 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ── Tailwind v4 ─────────────────────────────────── */
+@import "tailwindcss";
 
-/* ════════════════════════════════════════════════
-   SAVIKA — DESIGN SYSTEM
-   Brand tokens, utilities (no @apply — Tailwind v4 compatible)
-   ════════════════════════════════════════════════ */
+@source "../src";
 
-/* ── CSS Custom Properties ─────────────────────── */
-:root {
+@theme {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
   --color-gold: #C47F17;
   --color-gold-dark: #a86c12;
   --color-brown: #8E562E;
   --color-cream: #FFF8F0;
   --color-cream-mid: #FFF0DC;
-  --color-text: #2E2E2E;
-  --color-text-sub: #5a4a3a;
-  --font-sans: var(--font-poppins), system-ui, sans-serif;
-  --font-display: var(--font-playfair), Georgia, serif;
+
+  --font-sans: var(--font-poppins), 'Poppins', system-ui, sans-serif;
+  --font-display: var(--font-playfair), 'Playfair Display', Georgia, serif;
+}
+
+/* ════════════════════════════════════════════════
+   SAVIKA — Global styles (no @apply)
+   ════════════════════════════════════════════════ */
+
+:root {
   color-scheme: light;
 }
 
@@ -25,7 +32,6 @@
   color-scheme: dark;
 }
 
-/* ── Base resets ───────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -38,14 +44,14 @@ html {
 
 body {
   font-family: var(--font-sans);
-  color: var(--color-text);
+  color: #2E2E2E;
   line-height: 1.6;
 }
 
 /* ── Scrollbar ─────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -53,11 +59,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-gold);
-  border-radius: 3px;
+  background: #C47F17;
+  border-radius: 4px;
 }
 
-/* ── Hide scrollbar (pill rows) ────────────────── */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -67,7 +72,7 @@ body {
   display: none;
 }
 
-/* ── Details/summary (FAQ) ─────────────────────── */
+/* ── FAQ details ───────────────────────────────── */
 details>summary {
   list-style: none;
   cursor: pointer;
@@ -90,7 +95,17 @@ details>summary::-webkit-details-marker {
   }
 }
 
-@keyframes float1 {
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
 
   0%,
   100% {
@@ -102,112 +117,287 @@ details>summary::-webkit-details-marker {
   }
 }
 
-@keyframes float2 {
-
-  0%,
-  100% {
-    transform: translateY(-4px);
-  }
-
-  50% {
-    transform: translateY(4px);
-  }
-}
-
-@keyframes pulse-ring {
-  0% {
-    box-shadow: 0 0 0 0 rgba(196, 127, 23, .4);
-  }
-
-  70% {
-    box-shadow: 0 0 0 10px rgba(196, 127, 23, 0);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgba(196, 127, 23, 0);
-  }
-}
-
 .animate-fadeUp {
   animation: fadeUp 300ms ease forwards;
 }
 
-.animate-float1 {
-  animation: float1 3s ease-in-out infinite;
+.animate-marquee {
+  animation: marquee 28s linear infinite;
 }
 
-.animate-float2 {
-  animation: float2 4s ease-in-out infinite;
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
 
-.animate-pulse-ring {
-  animation: pulse-ring 2s cubic-bezier(.455, .03, .515, .955) infinite;
+/* ════════════════════════════════════════════════
+   LAYOUT UTILITIES (media-query backed)
+   These guarantee responsive layouts work
+   even if Tailwind class scanning misses TSX files
+   ════════════════════════════════════════════════ */
+
+/* Section wrapper */
+.section-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-/* ── Primary button ────────────────────────────── */
-.btn-primary {
+@media (min-width: 640px) {
+  .section-wrap {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-wrap {
+    padding: 0 2rem;
+  }
+}
+
+/* 2-col grid at lg */
+.grid-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .grid-hero {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+/* 2-col grid at md */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* 4-col product grid */
+.grid-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .grid-products {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-products {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* 4-col category grid */
+.grid-cats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .grid-cats {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* ── Buttons ───────────────────────────────────── */
+.btn-gold {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 0.5rem;
-  background-color: #C47F17;
+  background: #C47F17;
   color: #fff;
-  font-weight: 600;
-  padding: 0.625rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0.75rem 1.75rem;
   border-radius: 9999px;
   border: none;
   cursor: pointer;
   text-decoration: none;
-  transition: background-color 150ms, transform 150ms, box-shadow 150ms;
-  box-shadow: 0 4px 14px rgba(196, 127, 23, .25);
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(196, 127, 23, .30);
+  transition: background 200ms, transform 150ms;
 }
 
-.btn-primary:hover {
-  background-color: #a86c12;
-  transform: scale(1.03);
+.btn-gold:hover {
+  background: #a86c12;
+  transform: scale(1.04);
 }
 
-.btn-primary:active {
-  transform: scale(0.98);
+.btn-gold:active {
+  transform: scale(0.97);
 }
 
-/* ── Outline button ────────────────────────────── */
-.btn-outline {
+.btn-outline-brown {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 0.5rem;
-  background-color: transparent;
-  color: #C47F17;
-  font-weight: 600;
-  padding: 0.625rem 1.5rem;
+  background: transparent;
+  color: #8E562E;
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0.75rem 1.75rem;
   border-radius: 9999px;
-  border: 2px solid #C47F17;
+  border: 2px solid #8E562E;
   cursor: pointer;
   text-decoration: none;
-  transition: background-color 150ms, color 150ms, transform 150ms;
+  white-space: nowrap;
+  transition: background 200ms, color 200ms, transform 150ms;
 }
 
-.btn-outline:hover {
-  background-color: #C47F17;
+.btn-outline-brown:hover {
+  background: #8E562E;
   color: #fff;
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
-.btn-outline:active {
-  transform: scale(0.98);
+/* ── Product card ──────────────────────────────── */
+.product-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+  transition: box-shadow 250ms, transform 250ms;
 }
 
-/* ── Image placeholder ─────────────────────────── */
-.img-placeholder {
+.product-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .11);
+  transform: translateY(-3px);
+}
+
+.dark .product-card {
+  background: #1e1e1e;
+}
+
+.product-card-img {
+  height: 180px;
+  background: #F9F4EE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .product-card-img {
+    height: 210px;
+  }
+}
+
+.dark .product-card-img {
+  background: #2a2a2a;
+}
+
+.product-card-body {
+  padding: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .product-card-body {
+    padding: 1rem;
+  }
+}
+
+/* Add to cart button */
+.atc-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem;
+  border-radius: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: #FFF0DC;
+  color: #C47F17;
+  transition: background 200ms, color 200ms, transform 100ms;
+}
+
+.atc-btn:hover:not(:disabled) {
+  background: #C47F17;
+  color: #fff;
+}
+
+.atc-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.atc-btn:disabled {
+  background: #f0f0f0;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.atc-btn.added {
+  background: #16a34a;
+  color: #fff;
+}
+
+.dark .atc-btn {
+  background: #2a1800;
+}
+
+/* ── Img placeholder ───────────────────────────── */
+.img-ph {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F9F4EE;
+  background: #F9F4EE;
 }
 
-.dark .img-placeholder {
-  background-color: #2a2a2a;
+.dark .img-ph {
+  background: #2a2a2a;
+}
+
+/* ── Cat card & reason card hovers ─────────────── */
+.cat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(0, 0, 0, .05);
+  text-decoration: none;
+  text-align: center;
+  transition: box-shadow 200ms, transform 200ms;
+}
+
+.cat-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .1);
+  transform: translateY(-4px);
+}
+
+.reason-card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid transparent;
+  transition: box-shadow 250ms, border-color 250ms;
+}
+
+.reason-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .1);
+  border-color: rgba(196, 127, 23, .25);
 }
