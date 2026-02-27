@@ -1,18 +1,14 @@
-@import '@fortawesome/fontawesome-free/css/all.min.css';
-
 @tailwind base;
-
 @tailwind components;
 @tailwind utilities;
 
 /* ════════════════════════════════════════════════
    SAVIKA — DESIGN SYSTEM
-   Colour palette, typography, utilities
+   Brand tokens, utilities (no @apply — Tailwind v4 compatible)
    ════════════════════════════════════════════════ */
 
 /* ── CSS Custom Properties ─────────────────────── */
 :root {
-  /* Brand colours */
   --color-gold: #C47F17;
   --color-gold-dark: #a86c12;
   --color-brown: #8E562E;
@@ -20,12 +16,9 @@
   --color-cream-mid: #FFF0DC;
   --color-text: #2E2E2E;
   --color-text-sub: #5a4a3a;
-
-  color-scheme: light;
-
-  /* Font stacks */
   --font-sans: var(--font-poppins), system-ui, sans-serif;
   --font-display: var(--font-playfair), Georgia, serif;
+  color-scheme: light;
 }
 
 .dark {
@@ -49,11 +42,6 @@ body {
   line-height: 1.6;
 }
 
-/* ── Typography helpers ────────────────────────── */
-.font-display {
-  font-family: var(--font-display);
-}
-
 /* ── Scrollbar ─────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 5px;
@@ -69,7 +57,7 @@ body {
   border-radius: 3px;
 }
 
-/* ── Scrollbar hide (horizontal pill rows) ─────── */
+/* ── Hide scrollbar (pill rows) ────────────────── */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -79,9 +67,10 @@ body {
   display: none;
 }
 
-/* ── Details/summary (FAQ accordions) ─────────── */
+/* ── Details/summary (FAQ) ─────────────────────── */
 details>summary {
   list-style: none;
+  cursor: pointer;
 }
 
 details>summary::-webkit-details-marker {
@@ -127,7 +116,7 @@ details>summary::-webkit-details-marker {
 
 @keyframes pulse-ring {
   0% {
-    box-shadow: 0 0 0 0 rgba(196, 127, 23, 0.4);
+    box-shadow: 0 0 0 0 rgba(196, 127, 23, .4);
   }
 
   70% {
@@ -152,62 +141,73 @@ details>summary::-webkit-details-marker {
 }
 
 .animate-pulse-ring {
-  animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  animation: pulse-ring 2s cubic-bezier(.455, .03, .515, .955) infinite;
 }
 
-/* ── Component utilities ───────────────────────── */
-
-/* Primary filled button */
+/* ── Primary button ────────────────────────────── */
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 bg-[#C47F17] text-white font-semibold px-6 py-2.5 rounded-full hover:bg-[#a86c12] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 shadow-md shadow-[#C47F17]/20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #C47F17;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.625rem 1.5rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 150ms, transform 150ms, box-shadow 150ms;
+  box-shadow: 0 4px 14px rgba(196, 127, 23, .25);
 }
 
-/* Outline button */
+.btn-primary:hover {
+  background-color: #a86c12;
+  transform: scale(1.03);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ── Outline button ────────────────────────────── */
 .btn-outline {
-  @apply inline-flex items-center justify-center gap-2 border-2 border-[#C47F17] text-[#C47F17] font-semibold px-6 py-2.5 rounded-full hover:bg-[#C47F17] hover:text-white hover:scale-[1.03] active:scale-[0.98] transition-all duration-200;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: #C47F17;
+  font-weight: 600;
+  padding: 0.625rem 1.5rem;
+  border-radius: 9999px;
+  border: 2px solid #C47F17;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 150ms, color 150ms, transform 150ms;
 }
 
-/* Card base */
-.card {
-  @apply bg-white dark:bg-[#1C1C1C] rounded-2xl border border-[#e8ddd0] dark:border-white/10 shadow-sm;
+.btn-outline:hover {
+  background-color: #C47F17;
+  color: #fff;
+  transform: scale(1.03);
 }
 
-/* Section container */
-.section-container {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+.btn-outline:active {
+  transform: scale(0.98);
 }
 
-/* Section label (eyebrow text) */
-.section-label {
-  @apply text-xs font-bold tracking-widest uppercase text-[#8E562E] dark:text-[#c4a87e];
-}
-
-/* Section heading */
-.section-heading {
-  @apply text-3xl lg:text-4xl font-extrabold text-[#2C1A0E] dark:text-white font-[family-name:var(--font-playfair)];
-}
-
-/* Gold highlight span */
-.gold-text {
-  @apply text-[#C47F17] italic;
-}
-
-/* ── Form inputs ───────────────────────────────── */
-.input-field {
-  @apply w-full px-4 py-2.5 rounded-xl border border-[#e8ddd0] dark:border-white/10 bg-white dark:bg-[#1C1C1C] text-[#2E2E2E] dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-sm font-[family-name:var(--font-poppins)] focus:outline-none focus:border-[#C47F17] focus:ring-2 focus:ring-[#C47F17]/20 transition-colors duration-200;
-}
-
-/* ── Navbar utility ────────────────────────────── */
-.navbar-icon-btn {
-  @apply relative w-9 h-9 flex items-center justify-center rounded-full text-[#2E2E2E] dark:text-[#F5F5F5] hover:bg-[#C47F17]/10 hover:text-[#C47F17] transition-all duration-200;
-}
-
-/* ── Badge pill ────────────────────────────────── */
-.badge-pill {
-  @apply inline-flex items-center gap-1.5 text-[10px] font-bold tracking-wide px-2.5 py-1 rounded-full;
-}
-
-/* ── Product card image placeholder ────────────── */
+/* ── Image placeholder ─────────────────────────── */
 .img-placeholder {
-  @apply w-full h-full flex items-center justify-center bg-[#F9F4EE] dark:bg-[#2a2a2a];
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F9F4EE;
+}
+
+.dark .img-placeholder {
+  background-color: #2a2a2a;
 }

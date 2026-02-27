@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Poppins } from 'next/font/google'
 import './globals.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import { ThemeProvider } from '@/components/ThemeProvider'
 
 
