@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function AdminLoginClient() {
     const [email, setEmail] = useState('')
@@ -36,11 +37,11 @@ export default function AdminLoginClient() {
             <div className="w-full max-w-md bg-[#1A1A1A] border border-white/10 rounded-2xl p-8 shadow-2xl">
 
                 {/* Logo */}
-                <div className="text-center mb-8">
-                    <Link href="/" className="inline-block">
-                        <span className="text-2xl font-extrabold text-[#C47F17]">Savika</span>
-                        <span className="block text-xs text-gray-500 uppercase tracking-widest mt-0.5">Admin Portal</span>
+                <div className="text-center mb-8 flex flex-col items-center">
+                    <Link href="/" className="inline-flex flex-col items-center hover:scale-105 transition-transform  bg-white rounded-[2rem] p-2 shadow-sm mb-2">
+                        <Image src="/logo.png" alt="Savika Logo" width={160} height={64} className="h-12 w-auto object-contain" />
                     </Link>
+                    <span className="block text-xs text-gray-500 uppercase tracking-widest mt-0.5">Admin Portal</span>
                 </div>
 
                 <h1 className="text-xl font-bold text-white mb-1">Administrator Sign In</h1>

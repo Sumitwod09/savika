@@ -2,9 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-
-
-
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 export default function SignupClient() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -51,8 +50,10 @@ export default function SignupClient() {
             </div>
             <div className="flex-1 flex items-center justify-center p-6 lg:p-12">
                 <div className="w-full max-w-md">
-                    <div className="mb-8">
-                        <Link href="/" className="text-2xl font-bold font-[var(--font-playfair)] text-[#C47F17]">Savika</Link>
+                    <div className="mb-8 flex flex-col items-center sm:items-start text-center sm:text-left">
+                        <Link href="/" className="inline-block mb-2">
+                            <Image src="/logo.png" alt="Savika Logo" width={160} height={64} className="h-12 w-auto object-contain hover:scale-105 transition-transform" />
+                        </Link>
                         <h1 className="text-3xl font-bold font-[var(--font-playfair)] text-[#2E2E2E] mt-4">Create Account</h1>
                         <p className="text-sm text-gray-500 font-[var(--font-poppins)] mt-1">Already registered?{' '}
                             <Link href="/auth/login" className="text-[#C47F17] hover:underline font-semibold">Sign in</Link>
