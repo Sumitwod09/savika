@@ -332,7 +332,6 @@ export default async function ProductPage({ params }: Props) {
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover"
                                 priority
-                                onError={() => {/* handled by CSS fallback */ }}
                             />
                             {savingsPct > 0 && (
                                 <div className="absolute top-4 left-4 bg-[#C47F17] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">

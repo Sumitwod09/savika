@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useCartStore } from '@/store/cartStore'
 import CartDrawer from '@/components/layout/CartDrawer'
-import { ThemeToggle } from '@/components/ThemeToggle'
+
 
 const navLinks = [
     { label: 'Shop All', href: '/shop' },
@@ -112,16 +112,16 @@ export default function Navbar() {
 
                         {/* Action Icons */}
                         <div className="flex items-center gap-1">
-                            <button aria-label="Search" className="p-2.5 rounded-xl hover:bg-[#FFF0DC] dark:hover:bg-white/10 text-[#2E2E2E] dark:text-gray-300 hover:text-[#C47F17] transition-all">
+                            <button aria-label="Search" className="p-2.5 rounded-xl hover:bg-[#FFF0DC] text-[#2E2E2E] hover:text-[#C47F17] transition-all">
                                 <i className="fa-solid fa-magnifying-glass text-base" />
                             </button>
-                            <Link href="/account/wishlist" aria-label="Wishlist" className="hidden sm:flex p-2.5 rounded-xl hover:bg-[#FFF0DC] dark:hover:bg-white/10 text-[#2E2E2E] dark:text-gray-300 hover:text-[#C47F17] transition-all">
+                            <Link href="/account/wishlist" aria-label="Wishlist" className="hidden sm:flex p-2.5 rounded-xl hover:bg-[#FFF0DC] text-[#2E2E2E] hover:text-[#C47F17] transition-all">
                                 <i className="fa-regular fa-heart text-base" />
                             </Link>
-                            <Link href="/account" aria-label="Account" className="hidden sm:flex p-2.5 rounded-xl hover:bg-[#FFF0DC] dark:hover:bg-white/10 text-[#2E2E2E] dark:text-gray-300 hover:text-[#C47F17] transition-all">
+                            <Link href="/account" aria-label="Account" className="hidden sm:flex p-2.5 rounded-xl hover:bg-[#FFF0DC] text-[#2E2E2E] hover:text-[#C47F17] transition-all">
                                 <i className="fa-regular fa-user text-base" />
                             </Link>
-                            <ThemeToggle />
+
                             <button
                                 onClick={toggleCart}
                                 aria-label="Open Cart"

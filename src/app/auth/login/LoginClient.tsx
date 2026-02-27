@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
-import { createClient } from '@/utils/supabase/client'
+
 import { useRouter } from 'next/navigation'
 
 export default function LoginClient() {
@@ -18,14 +18,9 @@ export default function LoginClient() {
         e.preventDefault()
         setLoading(true)
         setError('')
-        const supabase = createClient()
-        const { error } = await supabase.auth.signInWithPassword({ email, password })
-        if (error) {
-            setError(error.message)
-            setLoading(false)
-        } else {
-            router.push('/account/orders')
-        }
+        // Mock login
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        router.push('/account/orders')
     }
 
     return (

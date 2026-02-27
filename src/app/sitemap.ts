@@ -1,5 +1,4 @@
 import { MetadataRoute } from 'next'
-import { createClient } from '@supabase/supabase-js'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://savika.in'
 
@@ -14,36 +13,11 @@ const FALLBACK_CATEGORIES = [
 ]
 
 async function getProductSlugs(): Promise<string[]> {
-    try {
-        const supabase = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.SUPABASE_SERVICE_ROLE_KEY!,
-            { auth: { persistSession: false } }
-        )
-        const { data } = await supabase
-            .from('products')
-            .select('slug')
-            .eq('is_active', true)
-        return data?.map((p: { slug: string }) => p.slug) ?? FALLBACK_PRODUCTS
-    } catch {
-        return FALLBACK_PRODUCTS
-    }
+    return FALLBACK_PRODUCTS
 }
 
 async function getCategorySlugs(): Promise<string[]> {
-    try {
-        const supabase = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.SUPABASE_SERVICE_ROLE_KEY!,
-            { auth: { persistSession: false } }
-        )
-        const { data } = await supabase
-            .from('categories')
-            .select('slug')
-        return data?.map((c: { slug: string }) => c.slug) ?? FALLBACK_CATEGORIES
-    } catch {
-        return FALLBACK_CATEGORIES
-    }
+    return FALLBACK_CATEGORIES
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

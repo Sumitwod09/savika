@@ -28,10 +28,6 @@
   color-scheme: light;
 }
 
-.dark {
-  color-scheme: dark;
-}
-
 *,
 *::before,
 *::after {
@@ -282,10 +278,6 @@ details>summary::-webkit-details-marker {
   transform: translateY(-3px);
 }
 
-.dark .product-card {
-  background: #1e1e1e;
-}
-
 .product-card-img {
   height: 180px;
   background: #F9F4EE;
@@ -300,10 +292,6 @@ details>summary::-webkit-details-marker {
   .product-card-img {
     height: 210px;
   }
-}
-
-.dark .product-card-img {
-  background: #2a2a2a;
 }
 
 .product-card-body {
@@ -354,10 +342,6 @@ details>summary::-webkit-details-marker {
   color: #fff;
 }
 
-.dark .atc-btn {
-  background: #2a1800;
-}
-
 /* ── Img placeholder ───────────────────────────── */
 .img-ph {
   width: 100%;
@@ -368,9 +352,7 @@ details>summary::-webkit-details-marker {
   background: #F9F4EE;
 }
 
-.dark .img-ph {
-  background: #2a2a2a;
-}
+
 
 /* ── Cat card & reason card hovers ─────────────── */
 .cat-card {

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
-import { createClient } from '@/utils/supabase/client'
+
 
 interface Permissions {
     can_manage_products: boolean
@@ -25,8 +25,7 @@ export default function AdminLayoutClient({ children, role, permissions, userEma
     const router = useRouter()
 
     const handleSignOut = async () => {
-        const supabase = createClient()
-        await supabase.auth.signOut()
+        // Mock sign out
         router.push('/admin/login')
     }
 

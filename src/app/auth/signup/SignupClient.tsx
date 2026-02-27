@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
-import { createClient } from '@/utils/supabase/client'
+
 
 export default function SignupClient() {
     const [name, setName] = useState('')
@@ -17,13 +17,10 @@ export default function SignupClient() {
         e.preventDefault()
         setLoading(true)
         setError('')
-        const supabase = createClient()
-        const { error } = await supabase.auth.signUp({
-            email, password,
-            options: { data: { full_name: name } },
-        })
-        if (error) { setError(error.message); setLoading(false) }
-        else { setSuccess(true) }
+        // Mock signup
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        setSuccess(true)
+        setLoading(false)
     }
 
     if (success) {

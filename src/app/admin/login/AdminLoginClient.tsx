@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { createClient } from '@/utils/supabase/client'
+
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 
@@ -21,30 +21,14 @@ export default function AdminLoginClient() {
         setLoading(true)
         setError('')
 
-        const supabase = createClient()
-
-        // Step 1: Sign in with password
-        const { error: signInError } = await supabase.auth.signInWithPassword({ email, password })
-        if (signInError) {
-            setError(signInError.message)
-            setLoading(false)
-            return
-        }
-
-        // Step 2: Verify role via secure server API route
-        const res = await fetch('/api/admin/verify-role')
-        const { role } = await res.json()
-
-        if (role !== 'admin' && role !== 'super_admin') {
-            // Not an admin — sign them out immediately
-            await supabase.auth.signOut()
+        // Mock admin login
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        if (email === 'admin@savika.in') {
+            router.push('/admin/dashboard')
+        } else {
             setError('Access Denied. This portal is for administrators only.')
             setLoading(false)
-            return
         }
-
-        // Step 3: Redirect to admin dashboard
-        router.push('/admin/dashboard')
     }
 
     return (

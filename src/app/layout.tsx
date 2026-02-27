@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import { Playfair_Display, Poppins } from 'next/font/google'
 import './globals.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import { ThemeProvider } from '@/components/ThemeProvider'
-
+import '@fortawesome/fontawesome-free/css/all.min.css'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -30,11 +29,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${playfair.variable}`} suppressHydrationWarning>
-      <body className="font-sans antialiased bg-[#FFF8F0] dark:bg-[#0F0F0F]">
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+    <html lang="en" className={`${poppins.variable} ${playfair.variable}`}>
+      <body className="font-sans antialiased bg-[#FFF8F0]">
+        {children}
       </body>
     </html>
   )
