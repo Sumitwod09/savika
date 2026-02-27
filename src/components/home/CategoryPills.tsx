@@ -11,7 +11,7 @@ const categories = [
 
 export default function CategoryPills() {
     return (
-        <section className="bg-white dark:bg-[#111] border-y border-[#F0E8DC] dark:border-white/10 py-6 px-4">
+        <section className="bg-transparent border-y border-[#F0E8DC] py-6 px-4">
             <div className="max-w-7xl mx-auto">
                 <div className="flex items-start justify-center gap-4 overflow-x-auto scrollbar-hide pb-2">
                     {categories.map((cat) => (
@@ -30,8 +30,8 @@ export default function CategoryPills() {
                             </div>
                             {/* Label */}
                             <div className="text-center">
-                                <p className="text-[11px] sm:text-xs font-semibold text-[#2E2E2E] dark:text-white group-hover:text-[#C47F17] transition-colors leading-tight">{cat.label}</p>
-                                <p className="text-[9px] sm:text-[10px] text-[#8E562E] dark:text-[#c4a87e] mt-0.5">{cat.sub}</p>
+                                <p className="text-[11px] sm:text-xs font-semibold text-[#2E2E2E] group-hover:text-[#C47F17] transition-colors leading-tight">{cat.label}</p>
+                                <p className="text-[9px] sm:text-[10px] text-[#8E562E] mt-0.5">{cat.sub}</p>
                             </div>
                         </Link>
                     ))}
@@ -47,7 +47,7 @@ export default function CategoryPills() {
                         </div>
                         <div className="text-center">
                             <p className="text-[11px] sm:text-xs font-semibold text-[#C47F17] leading-tight">Shop All</p>
-                            <p className="text-[9px] sm:text-[10px] text-[#8E562E] dark:text-[#c4a87e] mt-0.5">All products</p>
+                            <p className="text-[9px] sm:text-[10px] text-[#8E562E] mt-0.5">All products</p>
                         </div>
                     </Link>
                 </div>
