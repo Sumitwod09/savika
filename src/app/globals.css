@@ -1,32 +1,63 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
 @tailwind base;
+
 @tailwind components;
 @tailwind utilities;
 
-/* ── Dark mode: class strategy (next-themes) ── */
+/* ════════════════════════════════════════════════
+   SAVIKA — DESIGN SYSTEM
+   Colour palette, typography, utilities
+   ════════════════════════════════════════════════ */
+
+/* ── CSS Custom Properties ─────────────────────── */
 :root {
+  /* Brand colours */
+  --color-gold: #C47F17;
+  --color-gold-dark: #a86c12;
+  --color-brown: #8E562E;
+  --color-cream: #FFF8F0;
+  --color-cream-mid: #FFF0DC;
+  --color-text: #2E2E2E;
+  --color-text-sub: #5a4a3a;
+
   color-scheme: light;
+
+  /* Font stacks */
+  --font-sans: var(--font-poppins), system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, serif;
 }
 
 .dark {
   color-scheme: dark;
 }
 
-/*
-  Theme transition: only apply smooth color transitions when
-  the .theme-transitioning class is active (added by next-themes
-  during theme switch). This avoids overriding Tailwind transitions
-  on every element globally.
-*/
-.theme-transitioning *,
-.theme-transitioning *::before,
-.theme-transitioning *::after {
-  transition: background-color 250ms ease, border-color 250ms ease, color 250ms ease !important;
+/* ── Base resets ───────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* ── Scrollbar styling ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* ── Typography helpers ────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* ── Scrollbar ─────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -34,11 +65,21 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #C47F17;
+  background: var(--color-gold);
   border-radius: 3px;
 }
 
-/* ── Details/Summary marker removal (for FAQ accordions) ── */
+/* ── Scrollbar hide (horizontal pill rows) ─────── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Details/summary (FAQ accordions) ─────────── */
 details>summary {
   list-style: none;
 }
@@ -47,11 +88,11 @@ details>summary::-webkit-details-marker {
   display: none;
 }
 
-/* ── Animate fade in ── */
-@keyframes fadeIn {
+/* ── Animations ────────────────────────────────── */
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(-4px);
+    transform: translateY(8px);
   }
 
   to {
@@ -60,16 +101,113 @@ details>summary::-webkit-details-marker {
   }
 }
 
-.animate-fadeIn {
-  animation: fadeIn 150ms ease forwards;
+@keyframes float1 {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
-/* ── Scrollbar hide utility (for horizontal scroll rows) ── */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@keyframes float2 {
+
+  0%,
+  100% {
+    transform: translateY(-4px);
+  }
+
+  50% {
+    transform: translateY(4px);
+  }
 }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(196, 127, 23, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(196, 127, 23, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(196, 127, 23, 0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 300ms ease forwards;
+}
+
+.animate-float1 {
+  animation: float1 3s ease-in-out infinite;
+}
+
+.animate-float2 {
+  animation: float2 4s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+/* ── Component utilities ───────────────────────── */
+
+/* Primary filled button */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 bg-[#C47F17] text-white font-semibold px-6 py-2.5 rounded-full hover:bg-[#a86c12] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 shadow-md shadow-[#C47F17]/20;
+}
+
+/* Outline button */
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 border-2 border-[#C47F17] text-[#C47F17] font-semibold px-6 py-2.5 rounded-full hover:bg-[#C47F17] hover:text-white hover:scale-[1.03] active:scale-[0.98] transition-all duration-200;
+}
+
+/* Card base */
+.card {
+  @apply bg-white dark:bg-[#1C1C1C] rounded-2xl border border-[#e8ddd0] dark:border-white/10 shadow-sm;
+}
+
+/* Section container */
+.section-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Section label (eyebrow text) */
+.section-label {
+  @apply text-xs font-bold tracking-widest uppercase text-[#8E562E] dark:text-[#c4a87e];
+}
+
+/* Section heading */
+.section-heading {
+  @apply text-3xl lg:text-4xl font-extrabold text-[#2C1A0E] dark:text-white font-[family-name:var(--font-playfair)];
+}
+
+/* Gold highlight span */
+.gold-text {
+  @apply text-[#C47F17] italic;
+}
+
+/* ── Form inputs ───────────────────────────────── */
+.input-field {
+  @apply w-full px-4 py-2.5 rounded-xl border border-[#e8ddd0] dark:border-white/10 bg-white dark:bg-[#1C1C1C] text-[#2E2E2E] dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-sm font-[family-name:var(--font-poppins)] focus:outline-none focus:border-[#C47F17] focus:ring-2 focus:ring-[#C47F17]/20 transition-colors duration-200;
+}
+
+/* ── Navbar utility ────────────────────────────── */
+.navbar-icon-btn {
+  @apply relative w-9 h-9 flex items-center justify-center rounded-full text-[#2E2E2E] dark:text-[#F5F5F5] hover:bg-[#C47F17]/10 hover:text-[#C47F17] transition-all duration-200;
+}
+
+/* ── Badge pill ────────────────────────────────── */
+.badge-pill {
+  @apply inline-flex items-center gap-1.5 text-[10px] font-bold tracking-wide px-2.5 py-1 rounded-full;
+}
+
+/* ── Product card image placeholder ────────────── */
+.img-placeholder {
+  @apply w-full h-full flex items-center justify-center bg-[#F9F4EE] dark:bg-[#2a2a2a];
 }

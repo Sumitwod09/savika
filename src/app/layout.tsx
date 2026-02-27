@@ -1,12 +1,20 @@
 import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
+import { Playfair_Display, Poppins } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/ThemeProvider'
+
 
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-poppins',
+  display: 'swap',
+})
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800'],
+  variable: '--font-playfair',
   display: 'swap',
 })
 
@@ -21,15 +29,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={poppins.variable} suppressHydrationWarning>
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          crossOrigin="anonymous"
-        />
-      </head>
-      <body className="font-[family-name:var(--font-poppins)] antialiased bg-[#FFF8F0] dark:bg-[#0F0F0F] transition-colors duration-300">
+    <html lang="en" className={`${poppins.variable} ${playfair.variable}`} suppressHydrationWarning>
+      <body className="font-sans antialiased bg-[#FFF8F0] dark:bg-[#0F0F0F]">
         <ThemeProvider>
           {children}
         </ThemeProvider>
