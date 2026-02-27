@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useCartStore } from '@/store/cartStore'
 import CartDrawer from '@/components/layout/CartDrawer'
 
@@ -96,7 +97,7 @@ export default function Navbar() {
 
                         {/* Logo */}
                         <Link href="/" className="flex items-center shrink-0">
-                            <img src="/logo.png" alt="Savika Logo" className="h-14 sm:h-16 w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" />
+                            <Image src="/logo.png" alt="Savika Logo" width={160} height={64} className="h-14 sm:h-16 w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" priority />
                         </Link>
 
                         {/* Desktop Nav */}

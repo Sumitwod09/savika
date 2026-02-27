@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 
 const footerLinks = {
     shop: [
@@ -70,8 +71,8 @@ export default function Footer() {
 
                     {/* Brand Column */}
                     <div className="lg:col-span-2">
-                        <Link href="/" className="inline-flex items-center mb-5 bg-white rounded-full p-2 shadow-sm hover:scale-105 transition-transform">
-                            <img src="/logo.png" alt="Savika Logo" className="h-16 w-auto object-contain rounded-full" />
+                        <Link href="/" className="inline-flex items-center mb-5 bg-white rounded-[2rem] p-2 shadow-sm hover:scale-105 transition-transform">
+                            <Image src="/logo.png" alt="Savika Logo" width={160} height={64} className="h-16 w-auto object-contain" />
                         </Link>
                         <p className="text-sm text-gray-400 leading-relaxed max-w-xs mb-6">
                             Bringing the soul of India's spice heritage to your kitchen. Every gram, pure. Every blend, authentic.
