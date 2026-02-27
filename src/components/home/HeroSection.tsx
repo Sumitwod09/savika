@@ -15,7 +15,7 @@ export default function HeroSection() {
                 <div className="grid-hero">
 
                     {/* ── LEFT ── */}
-                    <div style={{ order: 2 }}>
+                    <div style={{ order: 1 }}>
                         {/* Eyebrow badge */}
                         <div style={{
                             display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
@@ -77,7 +77,7 @@ export default function HeroSection() {
                     </div>
 
                     {/* ── RIGHT: Visual ── */}
-                    <div style={{ order: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', padding: '2rem 0' }}>
+                    <div style={{ order: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', padding: '2rem 0' }}>
                         {/* Outer blob */}
                         <div style={{
                             width: '320px', height: '320px', borderRadius: '50%',
@@ -134,7 +134,7 @@ export default function HeroSection() {
                         </div>
 
                         {/* Natural tag */}
-                        <div style={{
+                        <div className="animate-float" style={{
                             position: 'absolute', bottom: '0', right: '1rem',
                             background: '#C47F17', color: '#fff',
                             fontSize: '11px', fontWeight: 700,

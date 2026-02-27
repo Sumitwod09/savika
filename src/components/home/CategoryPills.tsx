@@ -13,7 +13,7 @@ export default function CategoryPills() {
     return (
         <section className="bg-white dark:bg-[#111] border-y border-[#F0E8DC] dark:border-white/10 py-6 px-4">
             <div className="max-w-7xl mx-auto">
-                <div className="flex items-start gap-4 overflow-x-auto scrollbar-hide pb-2">
+                <div className="flex items-start justify-center gap-4 overflow-x-auto scrollbar-hide pb-2">
                     {categories.map((cat) => (
                         <Link
                             key={cat.slug + cat.label}
