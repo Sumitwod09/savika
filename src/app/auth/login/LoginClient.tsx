@@ -1,0 +1,81 @@
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+
+import { createClient } from '@/utils/supabase/client'
+import { useRouter } from 'next/navigation'
+
+export default function LoginClient() {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [showPw, setShowPw] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState('')
+    const router = useRouter()
+
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault()
+        setLoading(true)
+        setError('')
+        const supabase = createClient()
+        const { error } = await supabase.auth.signInWithPassword({ email, password })
+        if (error) {
+            setError(error.message)
+            setLoading(false)
+        } else {
+            router.push('/account/orders')
+        }
+    }
+
+    return (
+        <div className="min-h-screen flex bg-[#F9F4EE] dark:bg-[#161616]">
+            <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#C47F17] to-[#8E562E] items-center justify-center p-12 relative overflow-hidden">
+                <div className="absolute inset-0 opacity-10 text-[20rem] text-center leading-none">🌶️</div>
+                <div className="relative text-center text-white">
+                    <h2 className="text-4xl font-bold font-[var(--font-playfair)] mb-4">Welcome Back</h2>
+                    <p className="text-white/80 font-[var(--font-poppins)] text-lg">Your spice journey continues.</p>
+                </div>
+            </div>
+            <div className="flex-1 flex items-center justify-center p-6 lg:p-12">
+                <div className="w-full max-w-md">
+                    <div className="mb-8">
+                        <Link href="/" className="text-2xl font-bold font-[var(--font-playfair)] text-[#C47F17]">Savika</Link>
+                        <h1 className="text-3xl font-bold font-[var(--font-playfair)] text-[#2E2E2E] dark:text-[#F5F5F5] mt-4">Sign In</h1>
+                        <p className="text-sm text-gray-500 font-[var(--font-poppins)] mt-1">Don't have an account?{' '}
+                            <Link href="/auth/signup" className="text-[#C47F17] hover:underline font-semibold">Create one</Link>
+                        </p>
+                    </div>
+                    <form onSubmit={handleLogin} className="space-y-5">
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-semibold text-[#2E2E2E] dark:text-[#F5F5F5] font-[var(--font-poppins)] mb-1.5">Email Address</label>
+                            <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required
+                                className="w-full px-4 py-3 rounded-xl border border-[#e8ddd0] dark:border-[#333] bg-white dark:bg-[#262626] text-[#2E2E2E] dark:text-[#F5F5F5] font-[var(--font-poppins)] text-sm focus:outline-none focus:border-[#C47F17] focus:ring-2 focus:ring-[#C47F17]/20 transition-all"
+                                placeholder="you@example.com" />
+                        </div>
+                        <div>
+                            <label htmlFor="password" className="block text-sm font-semibold text-[#2E2E2E] dark:text-[#F5F5F5] font-[var(--font-poppins)] mb-1.5">Password</label>
+                            <div className="relative">
+                                <input id="password" type={showPw ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} required
+                                    className="w-full px-4 py-3 rounded-xl border border-[#e8ddd0] dark:border-[#333] bg-white dark:bg-[#262626] text-[#2E2E2E] dark:text-[#F5F5F5] font-[var(--font-poppins)] text-sm focus:outline-none focus:border-[#C47F17] focus:ring-2 focus:ring-[#C47F17]/20 transition-all pr-11"
+                                    placeholder="••••••••" />
+                                <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#C47F17]">
+                                    {showPw ? <i className="fa-regular fa-eye-slash text-sm" /> : <i className="fa-regular fa-eye text-sm" />}
+                                </button>
+                            </div>
+                            <div className="text-right mt-1.5">
+                                <Link href="/auth/forgot-password" className="text-xs text-[#C47F17] hover:underline font-[var(--font-poppins)]">Forgot password?</Link>
+                            </div>
+                        </div>
+                        {error && <p className="text-sm text-red-500 font-[var(--font-poppins)] bg-red-50 dark:bg-red-900/20 px-4 py-2 rounded-lg">{error}</p>}
+                        <button type="submit" disabled={loading}
+                            className="w-full flex items-center justify-center gap-2 bg-[#C47F17] hover:bg-[#a86c12] text-white py-3.5 rounded-xl font-bold font-[var(--font-poppins)] transition-all duration-300 hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed">
+                            {loading ? <i className="fa-solid fa-spinner fa-spin text-sm" /> : null}
+                            {loading ? 'Signing in...' : 'Sign In →'}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    )
+}
