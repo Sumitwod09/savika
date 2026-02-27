@@ -30,7 +30,9 @@ export default function SignupClient() {
         return (
             <div className="min-h-screen flex items-center justify-center bg-[#F9F4EE] dark:bg-[#161616] px-4">
                 <div className="text-center max-w-md">
-                    <div className="text-6xl mb-4">✅</div>
+                    <div className="w-16 h-16 mx-auto rounded-full bg-green-100 flex items-center justify-center mb-4">
+                        <i className="fa-solid fa-circle-check text-4xl text-green-500" />
+                    </div>
                     <h2 className="text-2xl font-bold font-[var(--font-playfair)] text-[#2E2E2E] dark:text-[#F5F5F5] mb-2">Check your email!</h2>
                     <p className="text-gray-500 font-[var(--font-poppins)] text-sm">We've sent a confirmation link to <strong>{email}</strong>.</p>
                     <Link href="/auth/login" className="mt-6 inline-block text-[#C47F17] font-[var(--font-poppins)] font-semibold hover:underline">Back to Sign In →</Link>
@@ -42,7 +44,9 @@ export default function SignupClient() {
     return (
         <div className="min-h-screen flex bg-[#F9F4EE] dark:bg-[#161616]">
             <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#8E562E] to-[#C47F17] items-center justify-center p-12 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10 text-[20rem] text-center leading-none">🌿</div>
+                <div className="absolute inset-0 opacity-5 flex items-center justify-center">
+                    <i className="fa-solid fa-pepper-hot text-[20rem] text-[#C47F17]" />
+                </div>
                 <div className="relative text-center text-white">
                     <h2 className="text-4xl font-bold font-[var(--font-playfair)] mb-4">Join Savika</h2>
                     <p className="text-white/80 font-[var(--font-poppins)] text-lg">Pure spices. Premium experience.</p>

@@ -31,7 +31,9 @@ export default function LoginClient() {
     return (
         <div className="min-h-screen flex bg-[#F9F4EE] dark:bg-[#161616]">
             <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#C47F17] to-[#8E562E] items-center justify-center p-12 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10 text-[20rem] text-center leading-none">🌶️</div>
+                <div className="absolute inset-0 opacity-5 flex items-center justify-center">
+                    <i className="fa-solid fa-pepper-hot text-[20rem] text-[#C47F17]" />
+                </div>
                 <div className="relative text-center text-white">
                     <h2 className="text-4xl font-bold font-[var(--font-playfair)] mb-4">Welcome Back</h2>
                     <p className="text-white/80 font-[var(--font-poppins)] text-lg">Your spice journey continues.</p>

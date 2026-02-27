@@ -64,7 +64,9 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
                             sizes="(max-width: 768px) 50vw, 25vw"
                         />
                     ) : (
-                        <div className="w-full h-full flex items-center justify-center text-5xl">🌶️</div>
+                        <div className="w-full h-full flex items-center justify-center">
+                            <i className="fa-solid fa-pepper-hot text-5xl text-[#C47F17]/40" />
+                        </div>
                     )}
                 </div>
 

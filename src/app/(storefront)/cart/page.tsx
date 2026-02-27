@@ -17,7 +17,9 @@ export default function CartPage() {
         return (
             <div className="min-h-screen bg-[#F9F4EE] dark:bg-[#161616] flex items-center justify-center px-4">
                 <div className="text-center max-w-md">
-                    <div className="text-8xl mb-6">🛒</div>
+                    <div className="w-24 h-24 mx-auto rounded-full bg-[#FFF0DC] dark:bg-[#2a1800] flex items-center justify-center mb-6">
+                        <i className="fa-solid fa-cart-shopping text-4xl text-[#C47F17]/60" />
+                    </div>
                     <h2 className="text-3xl font-bold font-[var(--font-playfair)] text-[#2E2E2E] dark:text-[#F5F5F5] mb-3">Your cart is empty</h2>
                     <p className="text-gray-500 font-[var(--font-poppins)] mb-8">Discover India's finest spices and fill your kitchen with flavour.</p>
                     <Link href="/shop" className="inline-block bg-[#C47F17] hover:bg-[#a86c12] text-white px-8 py-4 rounded-full font-bold font-[var(--font-poppins)] transition-all hover:scale-105">
@@ -47,7 +49,9 @@ export default function CartPage() {
                                         {item.product.images?.[0] ? (
                                             <Image src={item.product.images[0]} alt={item.product.name} fill className="object-cover" />
                                         ) : (
-                                            <div className="w-full h-full flex items-center justify-center text-4xl">🌶️</div>
+                                            <div className="w-full h-full flex items-center justify-center">
+                                                <i className="fa-solid fa-pepper-hot text-4xl text-[#C47F17]/40" />
+                                            </div>
                                         )}
                                     </div>
                                     <div className="flex-1 min-w-0">

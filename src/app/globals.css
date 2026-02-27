@@ -11,13 +11,16 @@
   color-scheme: dark;
 }
 
-/* ── Global smooth transitions for theme switching ── */
-*,
-*::before,
-*::after {
-  transition-property: background-color, border-color, color;
-  transition-duration: 250ms;
-  transition-timing-function: ease;
+/*
+  Theme transition: only apply smooth color transitions when
+  the .theme-transitioning class is active (added by next-themes
+  during theme switch). This avoids overriding Tailwind transitions
+  on every element globally.
+*/
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition: background-color 250ms ease, border-color 250ms ease, color 250ms ease !important;
 }
 
 /* ── Scrollbar styling ── */
@@ -35,7 +38,7 @@
   border-radius: 3px;
 }
 
-/* ── Details/Summary marker removal ── */
+/* ── Details/Summary marker removal (for FAQ accordions) ── */
 details>summary {
   list-style: none;
 }
@@ -58,5 +61,15 @@ details>summary::-webkit-details-marker {
 }
 
 .animate-fadeIn {
-  animation: fadeIn 150ms ease forwards
+  animation: fadeIn 150ms ease forwards;
+}
+
+/* ── Scrollbar hide utility (for horizontal scroll rows) ── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

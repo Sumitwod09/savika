@@ -71,7 +71,9 @@ export default function CartDrawer() {
                                             {item.product.images?.[0] ? (
                                                 <Image src={item.product.images[0]} alt={item.product.name} fill className="object-cover" />
                                             ) : (
-                                                <div className="w-full h-full bg-[#e8ddd0] dark:bg-[#333] flex items-center justify-center text-2xl">🌶️</div>
+                                                <div className="w-full h-full bg-[#e8ddd0] dark:bg-[#333] flex items-center justify-center">
+                                                    <i className="fa-solid fa-pepper-hot text-2xl text-[#C47F17]/50" />
+                                                </div>
                                             )}
                                         </div>
                                         <div className="flex-1 min-w-0">

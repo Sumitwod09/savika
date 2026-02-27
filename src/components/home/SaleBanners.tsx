@@ -3,27 +3,29 @@ import Link from 'next/link'
 const banners = [
     {
         bg: 'from-[#8E562E] to-[#C47F17]',
-        badge: '🔥 Limited Time',
+        badge: 'Limited Time',
+        badgeIcon: 'fa-fire',
         title: '50% OFF',
         sub: 'On all masala blends',
         desc: 'Use code SPICE50 at checkout',
         cta: { label: 'Grab the Deal', href: '/shop?sale=masala' },
-        emoji: '🫙',
+        icon: 'fa-jar',
     },
     {
         bg: 'from-[#C47F17] to-[#E6A020]',
-        badge: '🌟 Fan Favourite',
+        badge: 'Fan Favourite',
+        badgeIcon: 'fa-star',
         title: '50% OFF',
         sub: 'Exotic & Rare spices',
         desc: 'Desi. Vegan. Powerful.',
         cta: { label: 'Buy Now', href: '/category/exotics-rare' },
-        emoji: '✨',
+        icon: 'fa-gem',
     },
 ]
 
 export default function SaleBanners() {
     return (
-        <section className="bg-[#FFF8F0] py-12 px-4">
+        <section className="bg-[#FFF8F0] dark:bg-[#0F0F0F] py-12 px-4">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {banners.map((b, i) => (
@@ -31,12 +33,15 @@ export default function SaleBanners() {
                             key={i}
                             className={`relative overflow-hidden rounded-3xl bg-gradient-to-r ${b.bg} text-white p-8 flex items-center justify-between group`}
                         >
-                            {/* Background decorative circle */}
+                            {/* Background decorative circles */}
                             <div className="absolute -right-10 -top-10 w-48 h-48 rounded-full bg-white/10 pointer-events-none" />
                             <div className="absolute -right-5 -bottom-10 w-32 h-32 rounded-full bg-white/10 pointer-events-none" />
 
                             <div className="relative z-10">
-                                <span className="inline-block bg-white/20 rounded-full px-3 py-1 text-xs font-bold mb-3">{b.badge}</span>
+                                <span className="inline-flex items-center gap-1.5 bg-white/20 rounded-full px-3 py-1 text-xs font-bold mb-3">
+                                    <i className={`fa-solid ${b.badgeIcon}`} />
+                                    {b.badge}
+                                </span>
                                 <h3 className="text-5xl font-extrabold leading-none mb-1">{b.title}</h3>
                                 <p className="text-lg font-bold mb-1">{b.sub}</p>
                                 <p className="text-sm text-white/80 mb-5">{b.desc}</p>
@@ -49,8 +54,8 @@ export default function SaleBanners() {
                                 </Link>
                             </div>
 
-                            <div className="relative z-10 text-8xl group-hover:scale-110 transition-transform duration-300">
-                                {b.emoji}
+                            <div className="relative z-10 w-24 h-24 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <i className={`fa-solid ${b.icon} text-4xl text-white`} />
                             </div>
                         </div>
                     ))}
