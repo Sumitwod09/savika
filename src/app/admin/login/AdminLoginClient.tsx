@@ -38,8 +38,14 @@ export default function AdminLoginClient() {
 
                 {/* Logo */}
                 <div className="text-center mb-8 flex flex-col items-center">
-                    <Link href="/" className="inline-flex flex-col items-center hover:scale-105 transition-transform  bg-white rounded-[2rem] p-2 shadow-sm mb-2">
-                        <Image src="/logo.png" alt="Savika Logo" width={160} height={64} className="h-12 w-auto object-contain" />
+                    <Link href="/" className="inline-flex items-center gap-2 group mb-2 hover:scale-105 transition-transform">
+                        <div className="bg-white rounded-full p-1.5 shadow-sm">
+                            <Image src="/logo.png" alt="Savika Logo" width={64} height={64} className="h-10 w-auto object-contain rounded-full" />
+                        </div>
+                        <div className="flex flex-col justify-center text-left">
+                            <span className="text-2xl font-extrabold text-[#C47F17] tracking-tight leading-none mb-0.5">SAVIKA</span>
+                            <span className="block text-[9px] text-[#8E562E] uppercase tracking-[0.2em] leading-none">Premium Spices</span>
+                        </div>
                     </Link>
                     <span className="block text-xs text-gray-500 uppercase tracking-widest mt-0.5">Admin Portal</span>
                 </div>

@@ -96,8 +96,12 @@ export default function Navbar() {
                     <div className="flex h-16 items-center justify-between gap-4">
 
                         {/* Logo */}
-                        <Link href="/" className="flex items-center shrink-0">
-                            <Image src="/logo.png" alt="Savika Logo" width={160} height={64} className="h-14 sm:h-16 w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" priority />
+                        <Link href="/" className="flex items-center gap-2 shrink-0 group">
+                            <Image src="/logo.png" alt="Savika Logo" width={64} height={64} className="h-10 sm:h-12 w-auto object-contain drop-shadow-sm group-hover:scale-105 transition-transform" priority />
+                            <div className="flex flex-col justify-center">
+                                <span className="text-xl sm:text-2xl font-extrabold text-[#C47F17] tracking-tight leading-none mb-0.5">SAVIKA</span>
+                                <span className="block text-[8px] sm:text-[9px] text-[#8E562E] uppercase tracking-[0.2em] leading-none">Premium Spices</span>
+                            </div>
                         </Link>
 
                         {/* Desktop Nav */}

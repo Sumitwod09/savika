@@ -48,10 +48,16 @@ export default function AdminLayoutClient({ children, role, permissions, userEma
             {/* Sidebar */}
             <aside className="w-64 bg-[#1A1A1A] border-r border-white/10 flex flex-col shrink-0">
                 <div className="h-16 flex items-center px-6 border-b border-white/10 gap-2">
-                    <Link href="/" className="inline-block hover:scale-105 transition-transform bg-white rounded-full p-1.5 shadow-sm">
-                        <Image src="/logo.png" alt="Savika Logo" width={120} height={48} className="h-8 w-auto object-contain rounded-full" />
+                    <Link href="/" className="inline-flex items-center gap-2 group hover:scale-105 transition-transform">
+                        <div className="bg-white rounded-full p-1 shadow-sm">
+                            <Image src="/logo.png" alt="Savika Logo" width={48} height={48} className="h-6 w-auto object-contain rounded-full" />
+                        </div>
+                        <div className="flex flex-col justify-center">
+                            <span className="text-lg font-extrabold text-[#C47F17] tracking-tight leading-none mb-0.5">SAVIKA</span>
+                            <span className="block text-[7px] text-[#8E562E] uppercase tracking-[0.2em] leading-none">Premium Spices</span>
+                        </div>
                     </Link>
-                    <span className="ml-1 text-[10px] text-gray-500 uppercase tracking-widest">Admin</span>
+                    <span className="ml-2 text-[10px] text-gray-500 uppercase tracking-widest">Admin</span>
                     {role === 'super_admin' && (
                         <span className="ml-auto text-[9px] bg-[#C47F17]/20 text-[#C47F17] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
                             Super

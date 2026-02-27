@@ -71,8 +71,14 @@ export default function Footer() {
 
                     {/* Brand Column */}
                     <div className="lg:col-span-2">
-                        <Link href="/" className="inline-flex items-center mb-5 bg-white rounded-[2rem] p-2 shadow-sm hover:scale-105 transition-transform">
-                            <Image src="/logo.png" alt="Savika Logo" width={160} height={64} className="h-16 w-auto object-contain" />
+                        <Link href="/" className="inline-flex items-center gap-3 mb-5 group">
+                            <div className="bg-white rounded-full p-1.5 shadow-sm group-hover:scale-105 transition-transform">
+                                <Image src="/logo.png" alt="Savika Logo" width={64} height={64} className="h-10 w-auto object-contain rounded-full" />
+                            </div>
+                            <div className="flex flex-col justify-center">
+                                <span className="text-2xl font-extrabold text-[#C47F17] tracking-tight leading-none mb-1">SAVIKA</span>
+                                <span className="block text-[10px] text-[#D4A855] uppercase tracking-[0.2em] leading-none">Premium Spices</span>
+                            </div>
                         </Link>
                         <p className="text-sm text-gray-400 leading-relaxed max-w-xs mb-6">
                             Bringing the soul of India's spice heritage to your kitchen. Every gram, pure. Every blend, authentic.

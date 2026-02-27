@@ -51,8 +51,12 @@ export default function SignupClient() {
             <div className="flex-1 flex items-center justify-center p-6 lg:p-12">
                 <div className="w-full max-w-md">
                     <div className="mb-8 flex flex-col items-center sm:items-start text-center sm:text-left">
-                        <Link href="/" className="inline-block mb-2">
-                            <Image src="/logo.png" alt="Savika Logo" width={160} height={64} className="h-12 w-auto object-contain hover:scale-105 transition-transform" />
+                        <Link href="/" className="inline-flex items-center gap-2 mb-4 group">
+                            <Image src="/logo.png" alt="Savika Logo" width={64} height={64} className="h-10 w-auto object-contain group-hover:scale-105 transition-transform" />
+                            <div className="flex flex-col justify-center text-left">
+                                <span className="text-2xl font-extrabold text-[#C47F17] tracking-tight leading-none mb-0.5">SAVIKA</span>
+                                <span className="block text-[9px] text-[#8E562E] uppercase tracking-[0.2em] leading-none">Premium Spices</span>
+                            </div>
                         </Link>
                         <h1 className="text-3xl font-bold font-[var(--font-playfair)] text-[#2E2E2E] mt-4">Create Account</h1>
                         <p className="text-sm text-gray-500 font-[var(--font-poppins)] mt-1">Already registered?{' '}
