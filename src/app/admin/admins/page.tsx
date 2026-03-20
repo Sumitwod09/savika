@@ -84,7 +84,7 @@ export default function AdminsPage() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
-                                placeholder="admin@savika.in"
+                                placeholder="admin@savikafoods.in"
                                 className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-[#262626] text-white text-sm focus:outline-none focus:border-[#C47F17] transition-all"
                             />
                         </div>

@@ -96,7 +96,7 @@ export default function Footer() {
                             </div>
                             <div className="flex items-center gap-2 text-xs text-gray-400">
                                 <i className="fa-solid fa-envelope text-[#C47F17] w-4" />
-                                <span>hello@savika.in</span>
+                                <span>hello@savikafoods.in</span>
                             </div>
                         </div>
 

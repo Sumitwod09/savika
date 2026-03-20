@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://savika.in'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://savikafoods.in'
 
 // Fallback slugs used if DB is unavailable (dev mode / build time)
 const FALLBACK_PRODUCTS = [

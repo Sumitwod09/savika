@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: 'Shop All Premium Indian Spices Online | Savika',
     description: 'Browse 50+ premium whole spices, ground masalas, and artisan blends. Pure, FSSAI certified. Buy spices online India with fast delivery.',
     openGraph: { title: 'Shop Savika – Premium Indian Spices', description: 'Browse 50+ premium spice varieties.', locale: 'en_IN' },
-    alternates: { canonical: 'https://savika.in/shop' },
+    alternates: { canonical: 'https://savikafoods.in/shop' },
 }
 
 const CATEGORIES = [
@@ -33,7 +33,7 @@ const CATEGORIES = [
 
 export default function ShopPage() {
     const breadcrumb = [
-        { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://savika.in' }, { '@type': 'ListItem', position: 2, name: 'Shop', item: 'https://savika.in/shop' }] }
+        { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://savikafoods.in' }, { '@type': 'ListItem', position: 2, name: 'Shop', item: 'https://savikafoods.in/shop' }] }
     ]
 
     return (

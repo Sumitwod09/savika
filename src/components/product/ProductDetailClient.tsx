@@ -68,7 +68,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
                 {/* Price */}
                 <div className="flex items-center gap-3">
-                    <span className="text-4xl font-bold font-[var(--font-playfair)] text-[#C47F17]">{formatCurrency(price)}</span>
+                    <span className="text-4xl font-bold font-[var(--font-poppins)] text-[#C47F17]">{formatCurrency(price)}</span>
                     {product.sale_price && (
                         <span className="text-xl line-through text-gray-400 font-[var(--font-poppins)]">{formatCurrency(product.price)}</span>
                     )}

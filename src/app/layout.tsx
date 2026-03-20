@@ -12,7 +12,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Savika | Premium Indian Spices',
+  title: 'Savika Store',
   description: 'Discover the finest, purest premium Indian spices online. Authentic flavors, sourced with care.',
   icons: {
     icon: '/logo.png',

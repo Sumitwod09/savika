@@ -77,7 +77,7 @@ const CATEGORIES: Record<string, CategoryMeta> = {
         keywords: ['spice gift packs india', 'buy spice gift set india', 'diwali spice gift india', 'corporate spice gifts india', 'spice hamper india', 'premium gift packs india'],
         faqs: [
             { q: 'Can I customize the gift pack message?', a: 'Yes. Add a personal message at checkout and we will include a handwritten-style message card in the pack.' },
-            { q: 'Do you offer corporate gifting?', a: 'Yes. For orders of 50+ units, we offer custom labelling and bulk pricing. Contact us at hello@savika.in for corporate gifting quotes.' },
+            { q: 'Do you offer corporate gifting?', a: 'Yes. For orders of 50+ units, we offer custom labelling and bulk pricing. Contact us at hello@savikafoods.in for corporate gifting quotes.' },
             { q: 'What is the shelf life of spices in gift packs?', a: 'All spices are freshly packed with a minimum 12-month shelf life from the date of manufacture, printed on each individual pack.' },
         ],
     },
@@ -138,7 +138,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         openGraph: {
             title: cat.metaTitle,
             description: cat.metaDescription,
-            url: `https://savika.in/category/${slug}`,
+            url: `https://savikafoods.in/category/${slug}`,
             siteName: 'Savika',
             locale: 'en_IN',
             type: 'website',
@@ -149,7 +149,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             description: cat.metaDescription,
         },
         alternates: {
-            canonical: `https://savika.in/category/${slug}`,
+            canonical: `https://savikafoods.in/category/${slug}`,
         },
     }
 }
@@ -166,9 +166,9 @@ export default async function CategoryPage({ params }: Props) {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://savika.in' },
-            { '@type': 'ListItem', position: 2, name: 'Shop', item: 'https://savika.in/shop' },
-            { '@type': 'ListItem', position: 3, name: cat.name, item: `https://savika.in/category/${slug}` },
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://savikafoods.in' },
+            { '@type': 'ListItem', position: 2, name: 'Shop', item: 'https://savikafoods.in/shop' },
+            { '@type': 'ListItem', position: 3, name: cat.name, item: `https://savikafoods.in/category/${slug}` },
         ],
     }
 
@@ -187,7 +187,7 @@ export default async function CategoryPage({ params }: Props) {
         '@type': 'CollectionPage',
         name: cat.name,
         description: cat.description,
-        url: `https://savika.in/category/${slug}`,
+        url: `https://savikafoods.in/category/${slug}`,
         breadcrumb: breadcrumbSchema,
     }
 

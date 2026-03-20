@@ -59,7 +59,7 @@ export default function CartPage() {
                                             {item.product.name}
                                         </Link>
                                         {item.weight && <p className="text-xs text-[#8E562E] mt-0.5 font-[var(--font-poppins)]">{item.weight}</p>}
-                                        <p className="text-[#C47F17] font-bold font-[var(--font-playfair)] mt-1">{formatCurrency(price)}</p>
+                                        <p className="text-[#C47F17] font-bold font-[var(--font-poppins)] mt-1">{formatCurrency(price)}</p>
                                         <div className="flex items-center gap-3 mt-3">
                                             <div className="flex items-center border border-[#e8ddd0] rounded-lg overflow-hidden">
                                                 <button onClick={() => updateQuantity(item.product_id, item.quantity - 1)} className="px-3 py-1.5 text-[#C47F17] hover:bg-[#F9F4EE] transition-colors">
@@ -70,7 +70,7 @@ export default function CartPage() {
                                                     <i className="fa-solid fa-plus text-[10px]" />
                                                 </button>
                                             </div>
-                                            <span className="font-bold font-[var(--font-playfair)] text-[#2E2E2E]">{formatCurrency(price * item.quantity)}</span>
+                                            <span className="font-bold font-[var(--font-poppins)] text-[#2E2E2E]">{formatCurrency(price * item.quantity)}</span>
                                             <button onClick={() => removeItem(item.product_id)} className="ml-auto text-red-400 hover:text-red-600 transition-colors p-1">
                                                 <i className="fa-solid fa-trash text-sm" />
                                             </button>
@@ -101,7 +101,7 @@ export default function CartPage() {
                                 )}
                                 <div className="border-t border-[#e8ddd0] pt-3 flex justify-between">
                                     <span className="font-bold text-[#2E2E2E] font-[var(--font-poppins)]">Total</span>
-                                    <span className="font-bold text-xl text-[#C47F17] font-[var(--font-playfair)]">{formatCurrency(cartTotal + shipping)}</span>
+                                    <span className="font-bold text-xl text-[#C47F17] font-[var(--font-poppins)]">{formatCurrency(cartTotal + shipping)}</span>
                                 </div>
                             </div>
 

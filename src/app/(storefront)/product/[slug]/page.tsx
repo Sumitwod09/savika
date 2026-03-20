@@ -214,9 +214,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         openGraph: {
             title: p.metaTitle,
             description: p.metaDescription,
-            url: `https://savika.in/product/${slug}`,
+            url: `https://savikafoods.in/product/${slug}`,
             siteName: 'Savika',
-            images: [{ url: `https://savika.in${p.image}`, width: 1200, height: 630, alt: p.name }],
+            images: [{ url: `https://savikafoods.in${p.image}`, width: 1200, height: 630, alt: p.name }],
             locale: 'en_IN',
             type: 'website',
         },
@@ -224,10 +224,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             card: 'summary_large_image',
             title: p.metaTitle,
             description: p.metaDescription,
-            images: [`https://savika.in${p.image}`],
+            images: [`https://savikafoods.in${p.image}`],
         },
         alternates: {
-            canonical: `https://savika.in/product/${slug}`,
+            canonical: `https://savikafoods.in/product/${slug}`,
         },
     }
 }
@@ -246,7 +246,7 @@ export default async function ProductPage({ params }: Props) {
         '@type': 'Product',
         name: p.name,
         description: p.heroIntro.slice(0, 500),
-        image: [`https://savika.in${p.image}`],
+        image: [`https://savikafoods.in${p.image}`],
         brand: { '@type': 'Brand', name: 'Savika' },
         sku: `SAV-${slug.toUpperCase().replace(/-/g, '')}`,
         gtin14: undefined,
@@ -256,7 +256,7 @@ export default async function ProductPage({ params }: Props) {
             priceCurrency: 'INR',
             priceValidUntil: '2026-12-31',
             availability: p.stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-            url: `https://savika.in/product/${slug}`,
+            url: `https://savikafoods.in/product/${slug}`,
             seller: { '@type': 'Organization', name: 'Savika' },
         },
         aggregateRating: {
@@ -276,10 +276,10 @@ export default async function ProductPage({ params }: Props) {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://savika.in' },
-            { '@type': 'ListItem', position: 2, name: 'Shop', item: 'https://savika.in/shop' },
-            { '@type': 'ListItem', position: 3, name: p.category.name, item: `https://savika.in/category/${p.category.slug}` },
-            { '@type': 'ListItem', position: 4, name: p.name, item: `https://savika.in/product/${slug}` },
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://savikafoods.in' },
+            { '@type': 'ListItem', position: 2, name: 'Shop', item: 'https://savikafoods.in/shop' },
+            { '@type': 'ListItem', position: 3, name: p.category.name, item: `https://savikafoods.in/category/${p.category.slug}` },
+            { '@type': 'ListItem', position: 4, name: p.name, item: `https://savikafoods.in/product/${slug}` },
         ],
     }
 

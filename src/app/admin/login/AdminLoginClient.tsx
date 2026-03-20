@@ -85,7 +85,7 @@ export default function AdminLoginClient() {
                             onChange={(e) => setEmail(e.target.value)}
                             required
                             autoComplete="email"
-                            placeholder="admin@savika.in"
+                            placeholder="admin@savikafoods.in"
                             className="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#262626] text-white text-sm focus:outline-none focus:border-[#C47F17] focus:ring-2 focus:ring-[#C47F17]/20 transition-all placeholder:text-gray-600"
                         />
                     </div>

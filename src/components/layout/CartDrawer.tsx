@@ -114,7 +114,7 @@ export default function CartDrawer() {
                     <div className="border-t border-[#e8ddd0] px-6 py-4 space-y-4">
                         <div className="flex justify-between items-center">
                             <span className="text-sm text-gray-500 font-[var(--font-poppins)]">Subtotal</span>
-                            <span className="text-lg font-bold text-[#2E2E2E] font-[var(--font-playfair)]">{formatCurrency(cartTotal)}</span>
+                            <span className="text-lg font-bold text-[#2E2E2E] font-[var(--font-poppins)]">{formatCurrency(cartTotal)}</span>
                         </div>
                         <p className="text-xs text-gray-400 text-center">Shipping & taxes calculated at checkout</p>
                         <div className="space-y-2">

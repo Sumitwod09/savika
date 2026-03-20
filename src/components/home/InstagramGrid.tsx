@@ -14,7 +14,7 @@ export default function InstagramGrid() {
                 {/* Header */}
                 <div className="text-center mb-8">
                     <p className="text-xs uppercase tracking-widest text-[#8E562E] font-semibold mb-2">
-                        <i className="fa-brands fa-instagram mr-1 text-[#C47F17]" />Follow @savika.in
+                        <i className="fa-brands fa-instagram mr-1 text-[#C47F17]" />Follow @savikafoods.in
                     </p>
                     <h2 className="font-[family-name:var(--font-playfair)] text-2xl sm:text-3xl font-extrabold text-[#2E2E2E]">
                         The <span className="text-[#C47F17] italic">Spice Kitchen</span> Gallery
@@ -27,7 +27,7 @@ export default function InstagramGrid() {
                     {INSTAGRAM_POSTS.map((post) => (
                         <a
                             key={post.id}
-                            href="https://instagram.com/savika.in"
+                            href="https://instagram.com/savikafoods.in"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group relative aspect-square rounded-2xl overflow-hidden flex items-center justify-center hover:scale-[1.04] transition-transform duration-300 shadow-sm hover:shadow-lg"
@@ -48,7 +48,7 @@ export default function InstagramGrid() {
                 {/* Follow CTA */}
                 <div className="text-center mt-6">
                     <a
-                        href="https://instagram.com/savika.in"
+                        href="https://instagram.com/savikafoods.in"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-sm font-bold text-[#C47F17] hover:text-[#a86c12] border border-[#C47F17]/30 rounded-full px-6 py-2.5 hover:bg-[#FFF0DC] transition-all"

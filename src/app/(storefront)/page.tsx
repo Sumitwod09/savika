@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Savika – Premium Indian Spices',
         description: 'Pure, hand-picked spices from the heart of India. Delivered to your door.',
-        url: 'https://savika.in',
+        url: 'https://savikafoods.in',
         siteName: 'Savika',
-        images: [{ url: 'https://savika.in/og-image.jpg', width: 1200, height: 630 }],
+        images: [{ url: 'https://savikafoods.in/og-image.jpg', width: 1200, height: 630 }],
         locale: 'en_IN',
         type: 'website',
     },
@@ -26,11 +26,11 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: 'Savika – Premium Indian Spices',
         description: 'Pure, hand-picked spices from the heart of India.',
-        images: ['https://savika.in/og-image.jpg'],
+        images: ['https://savikafoods.in/og-image.jpg'],
     },
     alternates: {
-        canonical: 'https://savika.in',
-        languages: { 'en-IN': 'https://savika.in' },
+        canonical: 'https://savikafoods.in',
+        languages: { 'en-IN': 'https://savikafoods.in' },
     },
 }
 
@@ -45,11 +45,11 @@ export default function HomePage() {
                         '@context': 'https://schema.org',
                         '@type': 'Organization',
                         name: 'Savika',
-                        url: 'https://savika.in',
-                        logo: 'https://savika.in/logo.png',
+                        url: 'https://savikafoods.in',
+                        logo: 'https://savikafoods.in/logo.png',
                         sameAs: [
-                            'https://www.instagram.com/savika.in',
-                            'https://www.facebook.com/savika.in',
+                            'https://www.instagram.com/savikafoods.in',
+                            'https://www.facebook.com/savikafoods.in',
                         ],
                         contactPoint: {
                             '@type': 'ContactPoint',
