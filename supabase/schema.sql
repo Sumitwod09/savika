@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS public.products (
   stock INT NOT NULL DEFAULT 0,
   category_id UUID REFERENCES public.categories(id) ON DELETE SET NULL,
   images TEXT[] DEFAULT '{}',
-  weight_options TEXT[] DEFAULT '{"100g","250g","500g"}',
+  weight_options TEXT[] DEFAULT '{"20gm","50gm","100gm","200gm","500gm","1000gm"}',
   tags TEXT[] DEFAULT '{}',
   meta_title TEXT,
   meta_description TEXT,
